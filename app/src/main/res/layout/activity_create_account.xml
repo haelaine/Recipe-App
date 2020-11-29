@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#73937E"
+    android:baselineAligned="false"
+    android:orientation="vertical"
+    tools:context=".CreateAccountActivity">
+
+    <TextView
+        android:id="@+id/createAccountText"
+        android:layout_width="299dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:text="Create Account"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        android:translationY="55dp" />
+
+    <EditText
+        android:id="@+id/createEmail"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#FFFFFF"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:ems="10"
+        android:gravity="clip_vertical"
+        android:hint=" Email"
+        android:inputType="textEmailAddress"
+        android:translationY="300dp" />
+
+    <EditText
+        android:id="@+id/createPassword"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#FFFFFF"
+        android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
+        android:ems="10"
+        android:hint=" Password"
+        android:inputType="textPassword"
+        android:translationY="325dp" />
+
+    <TextView
+        android:id="@+id/createUsername"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:height="40dp"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:hint=" Username"
+        android:singleLine="false"
+        android:textSize="18sp"
+        android:translationY="150dp" />
+
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="205dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#CEB992"
+        android:text="Sign Up"
+        android:textSize="25dp"
+        android:translationY="300dp" />
+</LinearLayout>
