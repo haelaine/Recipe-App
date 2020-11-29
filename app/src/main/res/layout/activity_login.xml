@@ -4,29 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
+    android:background="#73937E"
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
+    <TextView
+        android:id="@+id/title_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/montserrat"
+        android:text="Log In"
+        android:textColor="#FFFEFE"
+        android:textColorHint="#FFFFFF"
+        android:textSize="35sp" />
+
     <EditText
         android:id="@+id/etEmail"
-        android:layout_width="match_parent"
+        android:layout_width="252dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#FFFFFF"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
         android:ems="10"
-        android:hint="email"
+        android:hint=" Email"
         android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_width="match_parent"
+        android:layout_width="252dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#FFFFFF"
+        android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
         android:ems="10"
-        android:hint="password"
-        android:inputType="textPassword" />
+        android:hint=" Password"
+        android:inputType="textPassword"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
+        android:layout_width="209dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="40dp"
+        android:width="209dp"
+        android:backgroundTint="#CEB992"
+        android:elevation="4dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Log In"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:cornerRadius="120px" />
+
+    <TextView
+        android:id="@+id/or"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login" />
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:fontFamily="@font/montserrat"
+        android:text="or"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="27sp" />
+
+    <Button
+        android:id="@+id/btSignUp"
+        android:layout_width="209dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#585563"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:cornerRadius="120px" />
+
+
 </LinearLayout>
