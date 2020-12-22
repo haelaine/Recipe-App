@@ -37,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
                     goPostsActivity()
+                    finish()    // remove back stack
                 }
                 else {
                     Log.e(TAG, "signInWithEmail failed", task.exception)

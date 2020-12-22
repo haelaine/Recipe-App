@@ -45,6 +45,7 @@ open class PostActivity : AppCompatActivity() {
                     signedInUser = userSnapshot.toObject(User::class.java)
                     Log.i(TAG, "signed in user: $signedInUser")
                 }
+                // TODO: login/Register does not create instance in user collection
                 .addOnFailureListener {exception ->
                     Log.i(TAG, "failure fetching signed in user", exception)
                 }
