@@ -8,7 +8,9 @@ import android.util.Log
 import android.widget.Toast
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_create_account.*
 import kotlinx.android.synthetic.main.activity_login.*
+
 
 private const val TAG = "LoginActivity"
 class LoginActivity : AppCompatActivity() {
@@ -42,7 +44,16 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+
+        btSignUp.setOnClickListener {
+            Log.d(TAG, "Try to show sign up activity")
+
+            //launch the login activity somehow
+            val intent = Intent(this, CreateAccountActivity::class.java)
+            startActivity(intent)
+        }
     }
+
 
     private fun goPostsActivity() {
         Log.i(TAG, "goPostActivity")

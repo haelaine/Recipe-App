@@ -21,7 +21,7 @@
         android:translationY="55dp" />
 
     <EditText
-        android:id="@+id/createEmail"
+        android:id="@+id/email_edittext_register"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -34,7 +34,7 @@
         android:translationY="300dp" />
 
     <EditText
-        android:id="@+id/createPassword"
+        android:id="@+id/password_edittext_register"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -46,7 +46,7 @@
         android:translationY="325dp" />
 
     <TextView
-        android:id="@+id/createUsername"
+        android:id="@+id/username_edittext_register"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -58,7 +58,7 @@
         android:translationY="150dp" />
 
     <Button
-        android:id="@+id/signUpButton"
+        android:id="@+id/register_button_register"
         android:layout_width="205dp"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
@@ -66,4 +66,13 @@
         android:text="Sign Up"
         android:textSize="25dp"
         android:translationY="300dp" />
+
+    <TextView
+        android:id="@+id/already_have_account_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Already have account?"
+        android:translationY="325dp" />
+
 </LinearLayout>
