@@ -52,8 +52,9 @@ class CreateAccountActivity : AppCompatActivity() {
                     Log.d(TAG, "Successfully created user with uid: ${it.result?.user?.uid}")
 
                     //launch profile screen after creating an account
-                    val intent = Intent(this, ProfileActivity::class.java)
+                    val intent = Intent(this, PostActivity::class.java)
                     startActivity(intent)
+                    finish()    // remove back stack
                 }
                 .addOnFailureListener {
                     Log.d(TAG, "Failed to create user: ${it.message}")
