@@ -19,7 +19,7 @@ class CreateAccountActivity : AppCompatActivity() {
         }
 
         already_have_account_text_view.setOnClickListener {
-            Log.d("MainActivity", "Try to show login activity")
+            Log.d(TAG, "Try to show login activity")
 
             //launch the login activity somehow
             val intent = Intent(this, LoginActivity::class.java)

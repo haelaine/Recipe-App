@@ -31,7 +31,7 @@
         android:gravity="clip_vertical"
         android:hint=" Email"
         android:inputType="textEmailAddress"
-        android:translationY="300dp" />
+        android:translationY="225dp" />
 
     <EditText
         android:id="@+id/password_edittext_register"
@@ -43,19 +43,7 @@
         android:ems="10"
         android:hint=" Password"
         android:inputType="textPassword"
-        android:translationY="325dp" />
-
-    <TextView
-        android:id="@+id/username_edittext_register"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:height="40dp"
-        android:drawableLeft="@drawable/ic_baseline_person_24"
-        android:hint=" Username"
-        android:singleLine="false"
-        android:textSize="18sp"
-        android:translationY="150dp" />
+        android:translationY="230dp" />
 
     <Button
         android:id="@+id/register_button_register"
@@ -65,7 +53,7 @@
         android:backgroundTint="#CEB992"
         android:text="Sign Up"
         android:textSize="25dp"
-        android:translationY="300dp" />
+        android:translationY="250dp" />
 
     <TextView
         android:id="@+id/already_have_account_text_view"
@@ -73,6 +61,19 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Already have account?"
-        android:translationY="325dp" />
+        android:textColor="#FFFFFF"
+        android:translationY="250dp" />
+
+    <EditText
+        android:id="@+id/username_edittext_register"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:height="40dp"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:hint=" Username"
+        android:singleLine="false"
+        android:textSize="18sp"
+        android:translationY="10dp" />
 
 </LinearLayout>
