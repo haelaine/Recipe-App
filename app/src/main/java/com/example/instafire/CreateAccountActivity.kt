@@ -5,14 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.example.instafire.models.Post
+import com.example.instafire.models.User
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_create_account.*
 
 private const val TAG = "CreateAccountActivity"
 class CreateAccountActivity : AppCompatActivity() {
+    private lateinit var firestoreDb: FirebaseFirestore   // points to root of firestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account)
+        firestoreDb = FirebaseFirestore.getInstance()
 
         register_button_register.setOnClickListener {
             performRegister()
@@ -50,6 +56,14 @@ class CreateAccountActivity : AppCompatActivity() {
 
                     //else if creating user is successful
                     Log.d(TAG, "Successfully created user with uid: ${it.result?.user?.uid}")
+
+                    // TODO: insert user into fireStoreDb users collection
+//                    val user = User(
+//                        "default_username",
+//                        18,
+//                        email
+//                    )
+//                    firestoreDb.collection("users").add(user)
 
                     //launch profile screen after creating an account
                     val intent = Intent(this, PostActivity::class.java)
