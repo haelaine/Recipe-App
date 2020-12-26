@@ -1,5 +1,5 @@
 package com.example.instafire
-
+// TODO: consider re-entering username
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -35,16 +35,28 @@ class CreateAccountActivity : AppCompatActivity() {
 
     private fun performRegister() {
         //val is a constant
+        val username = username_edittext_register.text.toString()
         val email = email_edittext_register.text.toString()
         val password = password_edittext_register.text.toString()
 
-        if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Please enter text in email/pw", Toast.LENGTH_SHORT).show()
+        if (username.isEmpty()) {
+            Toast.makeText(this, "Please enter username.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (email.isEmpty()) {
+            Toast.makeText(this, "Please enter email.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (password.isEmpty()) {
+            Toast.makeText(this, "Please enter password.", Toast.LENGTH_SHORT).show()
             return
         }
 
         //logs a debug message
-        Log.d(TAG, "Email is: " + email)
+        Log.d(TAG, "Username is:  + $username")
+        Log.d(TAG, "Email is:  + $email")
         Log.d(TAG, "Password: $password")
 
         //Firebase authentication to create a user with email and password
@@ -57,13 +69,17 @@ class CreateAccountActivity : AppCompatActivity() {
                     //else if creating user is successful
                     Log.d(TAG, "Successfully created user with uid: ${it.result?.user?.uid}")
 
-                    // TODO: insert user into fireStoreDb users collection
-//                    val user = User(
-//                        "default_username",
-//                        18,
-//                        email
-//                    )
-//                    firestoreDb.collection("users").add(user)
+                    val user = User(
+                        username,
+                        18,
+                            email
+                    )
+
+                    var usersReference = firestoreDb.collection("users")
+                    usersReference.document(FirebaseAuth.getInstance().currentUser?.uid as String)
+                            .set(user)
+                            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+                            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
 
                     //launch profile screen after creating an account
                     val intent = Intent(this, PostActivity::class.java)

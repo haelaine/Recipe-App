@@ -45,7 +45,7 @@ open class PostActivity : AppCompatActivity() {
                     signedInUser = userSnapshot.toObject(User::class.java)
                     Log.i(TAG, "signed in user: $signedInUser")
                 }
-                // TODO: login/Register does not create instance in user collection
+
                 .addOnFailureListener {exception ->
                     Log.i(TAG, "failure fetching signed in user", exception)
                 }
@@ -53,7 +53,7 @@ open class PostActivity : AppCompatActivity() {
         var postsReference = firestoreDb
                 .collection("posts")
                 .limit(20)
-                .orderBy("creation_time", Query.Direction.DESCENDING)
+                // .orderBy("creation_time", Query.Direction.DESCENDING)
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
         if(username != null) {
