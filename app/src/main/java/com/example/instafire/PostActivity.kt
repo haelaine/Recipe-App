@@ -15,7 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_post.*
 
 private const val TAG = "PostActivity"
-const val EXTRA_USERNAME = "EXTRA_USERNAME"
+const val EXTRA_USERNAME = "EXTRA_USERNAME"     // will be overwritten anyway
 
 open class PostActivity : AppCompatActivity() {
 
@@ -30,7 +30,7 @@ open class PostActivity : AppCompatActivity() {
 
         //create layout file that represents one post - done
         //create data source - done
-        posts = mutableListOf()
+        posts = mutableListOf()     // empty mutable list
         //create the adapter
         adapter = PostAdapter(this, posts)
         //bind adapter and layout manager to the RV
@@ -53,12 +53,14 @@ open class PostActivity : AppCompatActivity() {
         var postsReference = firestoreDb
                 .collection("posts")
                 .limit(20)
+                // TODO: order by creation time doesn't work
                 // .orderBy("creation_time", Query.Direction.DESCENDING)
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
         if(username != null) {
             supportActionBar?.title = username
             postsReference = postsReference.whereEqualTo("user.username", username)
+            // only display user's post on profile
         }
 
         postsReference.addSnapshotListener { snapshot, exception ->

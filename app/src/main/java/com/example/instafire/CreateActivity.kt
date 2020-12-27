@@ -87,8 +87,14 @@ class CreateActivity : AppCompatActivity() {
                     photoReference.downloadUrl
                 }.continueWithTask { downloadUrlTask ->
                     // Create a post object with the image URL and add that to the posts collection
+                    // TODO: update fake data
                     val post = Post(
+                        "default title",
                             etDescription.text.toString(),
+                        listOf("tag1", "tag2"),
+                            5,
+                        listOf("egg, milk"),
+                        60,
                             downloadUrlTask.result.toString(),
                             System.currentTimeMillis(),
                             signedInUser
