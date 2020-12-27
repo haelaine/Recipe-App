@@ -78,4 +78,16 @@
         android:textSize="18sp"
         android:translationY="10dp" />
 
+    <EditText
+        android:id="@+id/re_password_edittext_register"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#FFFFFF"
+        android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
+        android:ems="10"
+        android:hint=" Re-enter Password"
+        android:inputType="textPassword"
+        android:translationY="230dp" />
+
 </LinearLayout>

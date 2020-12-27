@@ -1,5 +1,4 @@
 package com.example.instafire
-// TODO: consider re-entering username
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -38,19 +37,30 @@ class CreateAccountActivity : AppCompatActivity() {
         val username = username_edittext_register.text.toString()
         val email = email_edittext_register.text.toString()
         val password = password_edittext_register.text.toString()
+        val rePassword = re_password_edittext_register.text.toString()
 
         if (username.isEmpty()) {
-            Toast.makeText(this, "Please enter username.", Toast.LENGTH_SHORT).show()
+            username_edittext_register.error = "Please enter username."
             return
         }
 
         if (email.isEmpty()) {
-            Toast.makeText(this, "Please enter email.", Toast.LENGTH_SHORT).show()
+            email_edittext_register.error = "Please enter email."
             return
         }
 
         if (password.isEmpty()) {
-            Toast.makeText(this, "Please enter password.", Toast.LENGTH_SHORT).show()
+            password_edittext_register.error = "Please enter password."
+            return
+        }
+
+        if (rePassword.isEmpty()) {
+            re_password_edittext_register.error = "Please re-enter password."
+            return
+        }
+
+        if (rePassword != password) {
+            re_password_edittext_register.error = "Password and confirm password does not match."
             return
         }
 

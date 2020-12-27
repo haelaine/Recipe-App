@@ -15,7 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_post.*
 
 private const val TAG = "PostActivity"
-private const val EXTRA_USERNAME = "EXTRA_USERNAME"
+const val EXTRA_USERNAME = "EXTRA_USERNAME"
 
 open class PostActivity : AppCompatActivity() {
 
@@ -73,6 +73,11 @@ open class PostActivity : AppCompatActivity() {
             for (post in postList) {
                 Log.i(TAG, "Post ${post}")
             }
+        }
+
+        fabCreate.setOnClickListener{
+            val intent = Intent(this, CreateActivity::class.java)
+            startActivity(intent)
         }
     }
 
