@@ -15,7 +15,6 @@ data class Post(
 data class Post(
         var title: String = "",
         var description: String = "",
-        var tags: List<String> = emptyList(),
         var difficulty: Int = 0,
         var ingredients: List<String> = emptyList(),
         var minutes_needed: Int = 0,           // var time_needed: String = "",
