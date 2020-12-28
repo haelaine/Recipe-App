@@ -13,11 +13,13 @@ data class Post(
 
 
 data class Post(
-        var description: String = "",
-        var difficulty: Int = 0,
-        var image_url: String = "",
-        //var ingredients: Array<String> = {},
-        var time_needed: String = "",
         var title: String = "",
+        var description: String = "",
+        var tags: List<String> = emptyList(),
+        var difficulty: Int = 0,
+        var ingredients: List<String> = emptyList(),
+        var minutes_needed: Int = 0,           // var time_needed: String = "",
+        @get:PropertyName("image_url") @set:PropertyName("image_url") var imageUrl: String = "",
+        @get:PropertyName("creation_time_ms") @set:PropertyName("creation_time_ms") var creationTimeMs: Long = 0,
         var user: User? = null
 )

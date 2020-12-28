@@ -1,5 +1,5 @@
 package com.example.instafire
-
+// TODO: consider resetting password
 import android.content.Intent
 import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity

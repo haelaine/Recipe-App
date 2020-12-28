@@ -7,6 +7,7 @@
     android:background="#73937E"
     android:baselineAligned="false"
     android:orientation="vertical"
+    android:padding="5dp"
     tools:context=".CreateAccountActivity">
 
     <TextView
@@ -70,10 +71,23 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:height="40dp"
+        android:backgroundTint="#FFFFFF"
         android:drawableLeft="@drawable/ic_baseline_person_24"
         android:hint=" Username"
         android:singleLine="false"
         android:textSize="18sp"
         android:translationY="10dp" />
+
+    <EditText
+        android:id="@+id/re_password_edittext_register"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#FFFFFF"
+        android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
+        android:ems="10"
+        android:hint=" Re-enter Password"
+        android:inputType="textPassword"
+        android:translationY="230dp" />
 
 </LinearLayout>

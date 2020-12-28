@@ -15,7 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_post.*
 
 private const val TAG = "PostActivity"
-private const val EXTRA_USERNAME = "EXTRA_USERNAME"
+const val EXTRA_USERNAME = "EXTRA_USERNAME"     // will be overwritten anyway
 
 open class PostActivity : AppCompatActivity() {
 
@@ -30,7 +30,7 @@ open class PostActivity : AppCompatActivity() {
 
         //create layout file that represents one post - done
         //create data source - done
-        posts = mutableListOf()
+        posts = mutableListOf()     // empty mutable list
         //create the adapter
         adapter = PostAdapter(this, posts)
         //bind adapter and layout manager to the RV
@@ -45,7 +45,7 @@ open class PostActivity : AppCompatActivity() {
                     signedInUser = userSnapshot.toObject(User::class.java)
                     Log.i(TAG, "signed in user: $signedInUser")
                 }
-                // TODO: login/Register does not create instance in user collection
+
                 .addOnFailureListener {exception ->
                     Log.i(TAG, "failure fetching signed in user", exception)
                 }
@@ -53,12 +53,14 @@ open class PostActivity : AppCompatActivity() {
         var postsReference = firestoreDb
                 .collection("posts")
                 .limit(20)
-                .orderBy("creation_time", Query.Direction.DESCENDING)
+                // TODO: order by creation time doesn't work
+                // .orderBy("creation_time", Query.Direction.DESCENDING)
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
         if(username != null) {
             supportActionBar?.title = username
             postsReference = postsReference.whereEqualTo("user.username", username)
+            // only display user's post on profile
         }
 
         postsReference.addSnapshotListener { snapshot, exception ->
@@ -73,6 +75,11 @@ open class PostActivity : AppCompatActivity() {
             for (post in postList) {
                 Log.i(TAG, "Post ${post}")
             }
+        }
+
+        fabCreate.setOnClickListener{
+            val intent = Intent(this, CreateActivity::class.java)
+            startActivity(intent)
         }
     }
 
