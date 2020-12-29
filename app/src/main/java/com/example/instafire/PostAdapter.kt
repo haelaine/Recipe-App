@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class PostAdapter(val context: Context, val posts: List<Post>) :
-    RecyclerView.Adapter<PostAdapter.ViewHolder>() {
+        RecyclerView.Adapter<PostAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false)
@@ -36,10 +36,10 @@ class PostAdapter(val context: Context, val posts: List<Post>) :
         fun bind(post: Post) {
             val username = post.user?.username as String
             itemView.tvUsername.text = post.user?.username
-            itemView.tvDescription.text = post.description
+            itemView.tvDishName.text = post.description
             // gradle dependency updated
-            Glide.with(context).load(post.imageUrl).into(itemView.ivPost)
-            Glide.with(context).load(getProfileImageUrl(username)).into(itemView.ivProfileImage)
+            Glide.with(context).load(post.imageUrl).into(itemView.ivRecipePicture)
+            Glide.with(context).load(getProfileImageUrl(username)).into(itemView.ivUserProfile)
 
             // relative time: 1 hour ago
             var formatter = SimpleDateFormat("MM/dd/yyyy")
