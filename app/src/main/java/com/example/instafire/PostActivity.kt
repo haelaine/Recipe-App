@@ -53,7 +53,7 @@ open class PostActivity : AppCompatActivity() {
         var postsReference = firestoreDb
                 .collection("posts")
                 .limit(20)
-                // TODO: order by creation time doesn't work
+                // TODO: order by creation time doesn't work, fireStore!
                 // .orderBy("creation_time", Query.Direction.DESCENDING)
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
