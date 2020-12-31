@@ -23,26 +23,26 @@
 
     <EditText
         android:id="@+id/email_edittext_register"
-        android:layout_width="350dp"
+        android:layout_width="252dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="#FFFFFF"
         android:drawableLeft="@drawable/ic_baseline_email_24"
         android:ems="10"
         android:gravity="clip_vertical"
-        android:hint=" Email"
+        android:hint="  Email"
         android:inputType="textEmailAddress"
         android:translationY="225dp" />
 
     <EditText
         android:id="@+id/password_edittext_register"
-        android:layout_width="350dp"
+        android:layout_width="252dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="#FFFFFF"
         android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
         android:ems="10"
-        android:hint=" Password"
+        android:hint="  Password"
         android:inputType="textPassword"
         android:translationY="230dp" />
 
@@ -53,8 +53,10 @@
         android:layout_gravity="center_horizontal"
         android:backgroundTint="#CEB992"
         android:text="Sign Up"
+        android:textAllCaps="false"
         android:textSize="25dp"
-        android:translationY="250dp" />
+        android:translationY="300dp"
+        app:cornerRadius="120px"/>
 
     <TextView
         android:id="@+id/already_have_account_text_view"
@@ -63,31 +65,31 @@
         android:gravity="center"
         android:text="Already have account?"
         android:textColor="#FFFFFF"
-        android:translationY="250dp" />
+        android:translationY="300dp" />
 
     <EditText
         android:id="@+id/username_edittext_register"
-        android:layout_width="350dp"
+        android:layout_width="252dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:height="40dp"
         android:backgroundTint="#FFFFFF"
         android:drawableLeft="@drawable/ic_baseline_person_24"
-        android:hint=" Username"
+        android:hint="  Username"
         android:singleLine="false"
         android:textSize="18sp"
         android:translationY="10dp" />
 
     <EditText
         android:id="@+id/re_password_edittext_register"
-        android:layout_width="350dp"
+        android:layout_width="252dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="#FFFFFF"
         android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
         android:ems="10"
-        android:hint=" Re-enter Password"
+        android:hint="  Confirm Password"
         android:inputType="textPassword"
-        android:translationY="230dp" />
+        android:translationY="115dp" />
 
 </LinearLayout>

@@ -30,7 +30,7 @@
         android:backgroundTint="#FFFFFF"
         android:drawableLeft="@drawable/ic_baseline_email_24"
         android:ems="10"
-        android:hint=" Email"
+        android:hint="  Email"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -41,9 +41,20 @@
         android:backgroundTint="#FFFFFF"
         android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
         android:ems="10"
-        android:hint=" Password"
+        android:hint="  Password"
         android:inputType="textPassword"
         android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="220dp"
+        android:gravity="left"
+        android:text="Forgot Password?"
+        android:textColor="#FFFFFF"
+        android:translationY="10dp"
+        />
 
     <Button
         android:id="@+id/btnLogin"

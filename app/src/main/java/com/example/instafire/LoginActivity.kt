@@ -1,14 +1,11 @@
 package com.example.instafire
 // TODO: consider resetting password
 import android.content.Intent
-import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_create_account.*
 import kotlinx.android.synthetic.main.activity_login.*
 
 
@@ -22,12 +19,33 @@ class LoginActivity : AppCompatActivity() {
         if (auth.currentUser != null) {
             goPostsActivity()
         }
+
+        forgot_password.setOnClickListener {
+            Log.d(TAG, "Try to show reset password activity")
+            //launch the reset password activity somehow
+            val intent = Intent(this, ResetPasswordActivity::class.java)
+            startActivity(intent)
+        }
+
         btnLogin.setOnClickListener {
             btnLogin.isEnabled = false
+
+            etEmail.setOnClickListener {
+                btnLogin.isEnabled = true
+            }
+            etPassword.setOnClickListener {
+                btnLogin.isEnabled = true
+            }
+
             val email = etEmail.text.toString()
             val password = etPassword.text.toString();
-            if (email.isBlank() || password.isBlank()) {
-                Toast.makeText(this, "Email/password cannot be empty", Toast.LENGTH_SHORT).show()
+            if (email.isBlank()) {
+                etEmail.error = "Email cannot be empty"
+                return@setOnClickListener
+            }
+
+            if (password.isBlank()) {
+                etPassword.error = "Password cannot be empty"
                 return@setOnClickListener
             }
 
