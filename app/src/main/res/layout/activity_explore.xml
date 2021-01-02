@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="#73937E"
     android:orientation="vertical"
-    tools:context=".PostActivity">
-
+    tools:context=".ExploreActivity">
 
     <LinearLayout
         android:id="@+id/topToolbar"
@@ -29,12 +28,12 @@
             />
 
         <TextView
-            android:id="@+id/homeText"
+            android:id="@+id/exploreText"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
-            android:text="Home"
+            android:text="Explore"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="30sp" />
@@ -58,6 +57,7 @@
         android:backgroundTint="#595965"
         android:clickable="true"
         android:src="@android:drawable/ic_input_add"
+        android:tint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

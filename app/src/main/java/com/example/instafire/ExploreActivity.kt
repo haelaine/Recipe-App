@@ -9,17 +9,13 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instafire.models.Post
-import com.google.firebase.firestore.Query
 import com.example.instafire.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_post.*
+import kotlinx.android.synthetic.main.activity_explore.*
 
-private const val TAG = "PostActivity"
-const val EXTRA_USERNAME = "EXTRA_USERNAME"     // will be overwritten anyway
-
-open class PostActivity : AppCompatActivity() {
-
+private const val TAG = "ExploreActivity"
+class ExploreActivity : AppCompatActivity() {
     private var signedInUser: User? = null
     private lateinit var firestoreDb: FirebaseFirestore
     private lateinit var posts: MutableList<Post>
@@ -27,7 +23,7 @@ open class PostActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_post)
+        setContentView(R.layout.activity_explore)
 
         //create layout file that represents one post - done
         //create data source - done
@@ -40,22 +36,22 @@ open class PostActivity : AppCompatActivity() {
         firestoreDb = FirebaseFirestore.getInstance()
 
         firestoreDb.collection("users")
-                .document(FirebaseAuth.getInstance().currentUser?.uid as String)
-                .get()
-                .addOnSuccessListener {userSnapshot ->
-                    signedInUser = userSnapshot.toObject(User::class.java)
-                    Log.i(TAG, "signed in user: $signedInUser")
-                }
+            .document(FirebaseAuth.getInstance().currentUser?.uid as String)
+            .get()
+            .addOnSuccessListener {userSnapshot ->
+                signedInUser = userSnapshot.toObject(User::class.java)
+                Log.i(TAG, "signed in user: $signedInUser")
+            }
 
-                .addOnFailureListener {exception ->
-                    Log.i(TAG, "failure fetching signed in user", exception)
-                }
+            .addOnFailureListener {exception ->
+                Log.i(TAG, "failure fetching signed in user", exception)
+            }
 
         var postsReference = firestoreDb
-                .collection("posts")
-                .limit(20)
-                // TODO: order by creation time doesn't work, fireStore!
-                // .orderBy("creation_time", Query.Direction.DESCENDING)
+            .collection("posts")
+            .limit(20)
+        // TODO: order by creation time doesn't work, fireStore!
+        // .orderBy("creation_time", Query.Direction.DESCENDING)
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
         if(username != null) {
@@ -84,12 +80,12 @@ open class PostActivity : AppCompatActivity() {
         }
 
         searchButton.setOnClickListener {
-            val intent = Intent(this, ExploreActivity::class.java)
-            startActivity(intent)
+            Toast.makeText(this, "You are already on Explore page!", Toast.LENGTH_SHORT).show()
         }
 
         homeButton.setOnClickListener {
-            Toast.makeText(this, "You are already on Post page!", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, PostActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -106,4 +102,6 @@ open class PostActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 }

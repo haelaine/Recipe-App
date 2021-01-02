@@ -91,7 +91,6 @@ class CreateActivity : AppCompatActivity() {
                     val post = Post(
                         "default title",
                             etDescription.text.toString(),
-                        listOf("tag1", "tag2"),
                             5,
                         listOf("egg, milk"),
                         60,
