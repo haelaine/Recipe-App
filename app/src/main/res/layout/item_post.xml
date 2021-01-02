@@ -110,7 +110,7 @@
             android:backgroundTint="#757373"
             android:text="Go To Recipe"
             android:textColor="#FBFBFB"
-            app:cornerRadius="15" />
+            app:cornerRadius="20dp" />
 
 
     </LinearLayout>
