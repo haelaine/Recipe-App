@@ -14,6 +14,7 @@ import com.example.instafire.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_post.*
+import kotlinx.android.synthetic.main.item_post.*
 
 private const val TAG = "PostActivity"
 const val EXTRA_USERNAME = "EXTRA_USERNAME"     // will be overwritten anyway
@@ -91,6 +92,9 @@ open class PostActivity : AppCompatActivity() {
         homeButton.setOnClickListener {
             Toast.makeText(this, "You are already on Post page!", Toast.LENGTH_SHORT).show()
         }
+
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
