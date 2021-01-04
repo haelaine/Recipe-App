@@ -55,8 +55,8 @@ class PostAdapter(val context: Context, val posts: List<Post>) :
             var dateString = formatter.format(Date(post.creationTimeMs))
             itemView.tvRelativeTime.text = dateString     // DateUtils.getRelativeTimeSpanString(post.creationTimeMs)
 
-//            TODO: only works when clicking on the image, directs to create page not the recipe page
-            itemView.setOnClickListener {v: View ->
+//            TODO: directs to create page not the recipe page
+            itemView.goToRecipeButton.setOnClickListener {v: View ->
                 val position: Int = adapterPosition
                 Toast.makeText(itemView.context, "item clicked", Toast.LENGTH_SHORT).show()
                 val intent = Intent(itemView.context, CreateActivity::class.java)
