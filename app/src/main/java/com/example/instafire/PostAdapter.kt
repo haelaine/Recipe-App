@@ -45,7 +45,7 @@ class PostAdapter(val context: Context, val posts: List<Post>) :
             val toRecipeBtn: Button = itemView.findViewById(R.id.goToRecipeButton)
             val username = post.user?.username as String
             itemView.tvUsername.text = post.user?.username
-            itemView.tvDishName.text = post.description
+            itemView.tvDishName.text = post.title
             // gradle dependency updated
             Glide.with(context).load(post.imageUrl).into(itemView.ivRecipePicture)
             Glide.with(context).load(getProfileImageUrl(username)).into(itemView.ivUserProfile)
