@@ -120,7 +120,7 @@ class CreateActivity : AppCompatActivity() {
                     imageView.setImageResource(0)
                     Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
                     val profileIntent = Intent(this, ProfileActivity::class.java)
-                    profileIntent.putExtra(EXTRA_USERNAME, signedInUser?.username)
+                    //postIntent.putExtra(EXTRA_USERNAME, signedInUser?.username)
                     startActivity(profileIntent)
                     finish()    // once created, remove create activity from back stack
                 }
