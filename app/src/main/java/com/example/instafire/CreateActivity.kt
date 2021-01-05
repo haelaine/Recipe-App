@@ -63,7 +63,7 @@ class CreateActivity : AppCompatActivity() {
             return
         }
 
-        if (etDescription.text.isBlank()) {
+        if (tvDescription.text.isBlank()) {
             Toast.makeText(this, "Description cannot be empty", Toast.LENGTH_SHORT).show()
             return
         }
@@ -90,7 +90,7 @@ class CreateActivity : AppCompatActivity() {
                     // TODO: update fake data
                     val post = Post(
                         "default title",
-                            etDescription.text.toString(),
+                            tvDescription.text.toString(),
                             5,
                         listOf("egg, milk"),
                         60,
@@ -105,7 +105,7 @@ class CreateActivity : AppCompatActivity() {
                         Log.e(TAG, "Exception during Firebase operations", postCreationTask.exception)
                         Toast.makeText(this, "Failed to save post", Toast.LENGTH_SHORT).show()
                     }
-                    etDescription.text.clear()
+                    tvDescription.text.clear()
                     imageView.setImageResource(0)
                     Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
                     val profileIntent = Intent(this, ProfileActivity::class.java)

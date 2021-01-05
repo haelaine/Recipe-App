@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Glide.init
 import com.example.instafire.models.Post
+import kotlinx.android.synthetic.main.activity_recipe_page.view.*
 import kotlinx.android.synthetic.main.item_post.*
 import kotlinx.android.synthetic.main.item_post.view.*
 import java.math.BigInteger
@@ -59,9 +60,23 @@ class PostAdapter(val context: Context, val posts: List<Post>) :
             itemView.goToRecipeButton.setOnClickListener {v: View ->
                 val position: Int = adapterPosition
                 Toast.makeText(itemView.context, "item clicked", Toast.LENGTH_SHORT).show()
-                val intent = Intent(itemView.context, CreateActivity::class.java)
+                val intent = Intent(itemView.context, RecipePage::class.java)
+                intent.putExtra("Dish Name", post.title)
+                intent.putExtra("Description", post.description)
+                intent.putExtra("Difficulty", post.difficulty)
+                //intent.putExtra("Steps", post.steps)
+                //intent.putExtra("Ingredients", post.ingredients)
+                intent.putExtra("Minutes needed", post.minutes_needed)
+
+                Log.i(TAG, post.description)
                 Log.i(TAG, "go to recipe button clicked")
                 startActivity(itemView.context, intent, null)
+                /*val recipePage = LayoutInflater.from(context).inflate(R.layout.activity_recipe_page, null)
+                recipePage.etDishName.text = post.title
+                recipePage.etDescription.text = post.description
+                Log.i(TAG, post.title)
+                Log.i(TAG, post.description)*/
+
             }
 
         }

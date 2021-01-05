@@ -36,7 +36,7 @@
                 android:textColor="#000000" />
 
             <EditText
-                android:id="@+id/etDishName"
+                android:id="@+id/tvDishName2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -44,7 +44,7 @@
                 android:hint="Enter Dish Name " />
 
             <EditText
-                android:id="@+id/etDescription"
+                android:id="@+id/tvDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -52,7 +52,7 @@
                 android:hint="Enter Your Description " />
 
             <EditText
-                android:id="@+id/etTime"
+                android:id="@+id/tvTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -60,7 +60,7 @@
                 android:hint="Enter Estimated Cooking Time" />
 
             <EditText
-                android:id="@+id/etRecipe"
+                android:id="@+id/tvIngredients"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -68,7 +68,7 @@
                 android:hint="Enter Your Recipe " />
 
             <EditText
-                android:id="@+id/etIngredients"
+                android:id="@+id/tvSteps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
