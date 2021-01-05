@@ -36,7 +36,7 @@
                 android:textColor="#000000" />
 
             <EditText
-                android:id="@+id/tvDishName2"
+                android:id="@+id/tvDishName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -52,15 +52,24 @@
                 android:hint="Enter Your Description " />
 
             <EditText
-                android:id="@+id/tvTime"
+                android:id="@+id/etDifficulty"
+                android:inputType="numberDecimal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:hint="Enter Estimated Cooking Time" />
+                android:hint="Enter Difficulty (Out of 10)" />
 
             <EditText
-                android:id="@+id/tvIngredients"
+                android:id="@+id/etTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Enter Estimated Cooking Time (in minutes)" />
+
+            <EditText
+                android:id="@+id/etRecipe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

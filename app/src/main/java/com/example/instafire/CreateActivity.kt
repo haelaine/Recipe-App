@@ -14,6 +14,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_create.*
+import kotlinx.android.synthetic.main.activity_create.imageView
+import kotlinx.android.synthetic.main.activity_create.tvDescription
+import kotlinx.android.synthetic.main.activity_recipe_page.*
 
 private const val TAG = "CreateActivity"
 private const val PICK_PHOTO_CODE = 1234
@@ -88,12 +91,19 @@ class CreateActivity : AppCompatActivity() {
                 }.continueWithTask { downloadUrlTask ->
                     // Create a post object with the image URL and add that to the posts collection
                     // TODO: update fake data
-                    val post = Post(
-                        "default title",
+
+                    var recipeSteps = etRecipe.text.toString();
+                    var stepsArray = recipeSteps.split(",");
+
+                    var ingredients = tvIngredients.text.toString();
+                    var ingredArray = ingredients.split(",");
+
+                    val post = Post(tvDishName.text.toString(),
                             tvDescription.text.toString(),
-                            5,
-                        listOf("egg, milk"),
-                        60,
+                            Integer.parseInt(etDifficulty.text.toString()),
+                        ingredArray,
+                        stepsArray,
+                            Integer.parseInt(etTime.text.toString()),
                             downloadUrlTask.result.toString(),
                             System.currentTimeMillis(),
                             signedInUser
