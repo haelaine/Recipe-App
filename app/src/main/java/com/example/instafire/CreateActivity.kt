@@ -100,6 +100,7 @@ class CreateActivity : AppCompatActivity() {
 
                     val post = Post(tvDishName.text.toString(),
                             tvDescription.text.toString(),
+
                             Integer.parseInt(etDifficulty.text.toString()),
                         ingredArray,
                         stepsArray,
