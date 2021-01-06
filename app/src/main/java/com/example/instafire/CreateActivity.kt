@@ -108,9 +108,10 @@ class CreateActivity : AppCompatActivity() {
                     etDescription.text.clear()
                     imageView.setImageResource(0)
                     Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
-                    val profileIntent = Intent(this, ProfileActivity::class.java)
-                    profileIntent.putExtra(EXTRA_USERNAME, signedInUser?.username)
-                    startActivity(profileIntent)
+                    val postIntent = Intent(this, PostActivity::class.java)
+//                    postIntent.putExtra(EXTRA_USERNAME, signedInUser?.username)
+                    Log.i(TAG, "Creation success, go to post page")
+                    startActivity(postIntent)
                     finish()    // once created, remove create activity from back stack
                 }
 

@@ -51,9 +51,7 @@ class PostAdapter(val context: Context, val posts: List<Post>) :
             Glide.with(context).load(getProfileImageUrl(username)).into(itemView.ivUserProfile)
 
             // relative time: 1 hour ago
-            var formatter = SimpleDateFormat("MM/dd/yyyy")
-            var dateString = formatter.format(Date(post.creationTimeMs))
-            itemView.tvRelativeTime.text = dateString     // DateUtils.getRelativeTimeSpanString(post.creationTimeMs)
+            itemView.tvRelativeTime.text = DateUtils.getRelativeTimeSpanString(post.creationTimeMs)
 
 //            TODO: only works when clicking on the image, directs to create page not the recipe page
             itemView.setOnClickListener {v: View ->
