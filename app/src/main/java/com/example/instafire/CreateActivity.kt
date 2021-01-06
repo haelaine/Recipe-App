@@ -14,6 +14,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_create.*
+import kotlinx.android.synthetic.main.activity_create.imageView
+import kotlinx.android.synthetic.main.activity_create.etDescription
+import kotlinx.android.synthetic.main.activity_recipe_page.*
 
 private const val TAG = "CreateActivity"
 private const val PICK_PHOTO_CODE = 1234
@@ -55,6 +58,21 @@ class CreateActivity : AppCompatActivity() {
         btnSubmit.setOnClickListener {
             handleSubmitButtonClick()
         }
+
+        searchButton_create.setOnClickListener {
+            val intent = Intent(this, ExploreActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeButton_create.setOnClickListener {
+            val intent = Intent(this, PostActivity::class.java)
+            startActivity(intent)
+        }
+
+        profileButton_create.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun handleSubmitButtonClick() {
@@ -63,7 +81,7 @@ class CreateActivity : AppCompatActivity() {
             return
         }
 
-        if (tvDescription.text.isBlank()) {
+        if (etDescription.text.isBlank()) {
             Toast.makeText(this, "Description cannot be empty", Toast.LENGTH_SHORT).show()
             return
         }
@@ -88,12 +106,20 @@ class CreateActivity : AppCompatActivity() {
                 }.continueWithTask { downloadUrlTask ->
                     // Create a post object with the image URL and add that to the posts collection
                     // TODO: update fake data
-                    val post = Post(
-                        "default title",
-                            tvDescription.text.toString(),
-                            5,
-                        listOf("egg, milk"),
-                        60,
+
+                    var recipeSteps = etRecipe.text.toString();
+                    var stepsArray = recipeSteps.split(",");
+
+                    var ingredients = tvIngredients.text.toString();
+                    var ingredArray = ingredients.split(",");
+
+                    val post = Post(etDishName.text.toString(),
+                            etDescription.text.toString(),
+
+                            Integer.parseInt(etDifficulty.text.toString()),
+                            ingredArray,
+                            stepsArray,
+                            Integer.parseInt(etTime.text.toString()),
                             downloadUrlTask.result.toString(),
                             System.currentTimeMillis(),
                             signedInUser
@@ -105,11 +131,12 @@ class CreateActivity : AppCompatActivity() {
                         Log.e(TAG, "Exception during Firebase operations", postCreationTask.exception)
                         Toast.makeText(this, "Failed to save post", Toast.LENGTH_SHORT).show()
                     }
-                    tvDescription.text.clear()
-                    recipeImage.setImageResource(0)
+                    etDescription.text.clear()
+                    imageView.setImageResource(0)
                     Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
+
                     val profileIntent = Intent(this, ProfileActivity::class.java)
-                    profileIntent.putExtra(EXTRA_USERNAME, signedInUser?.username)
+                    //postIntent.putExtra(EXTRA_USERNAME, signedInUser?.username)
                     startActivity(profileIntent)
                     finish()    // once created, remove create activity from back stack
                 }
@@ -124,7 +151,7 @@ class CreateActivity : AppCompatActivity() {
             if (resultCode == Activity.RESULT_OK) {
                 photoUri = data?.data   // location of photo
                 Log.i(TAG, "photoUri $photoUri")
-                recipeImage.setImageURI(photoUri)     // imageView is layout id
+                imageView.setImageURI(photoUri)     // imageView is layout id
             }
 
             else {

@@ -1,17 +1,15 @@
 package com.example.instafire
 
-import android.graphics.drawable.Drawable
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.example.instafire.models.Post
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_recipe_page.*
-import java.io.InputStream
-import java.lang.System.load
-import java.net.URL
-
+import kotlinx.android.synthetic.main.activity_recipe_page.homeButton
+import kotlinx.android.synthetic.main.activity_recipe_page.profileButton
+import kotlinx.android.synthetic.main.activity_recipe_page.searchButton
 
 private const val TAG = "RecipePage"
 
@@ -53,9 +51,37 @@ class RecipePage : AppCompatActivity() {
         tvDescription.text = description
         tvDifficulty.text = difficulty.toString()
         tvTime.text = minutesNeeded.toString()
-        Glide.with(this).load(imageUrl).into(recipeImage)
+        Glide.with(this).load(imageUrl).into(imageView)
         tvIngredients.text = listOfIngredients
         //tvSteps.text = steps
 
+
+        /*postsReference.addSnapshotListener{ snapshot, exception->
+            if (exception != null || snapshot == null) {
+                Log.e(TAG, "Exception when querying posts", exception)
+                return@addSnapshotListener
+            }
+            Log.i ("PostAdapter", "here first")
+
+            val postList = snapshot.toObjects(Post::class.java)
+            for (post in postList) {
+                Log.i(TAG, "Post ${post}")
+            }
+        }*/
+
+        searchButton.setOnClickListener {
+            val intent = Intent(this, ExploreActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeButton.setOnClickListener {
+            val intent = Intent(this, PostActivity::class.java)
+            startActivity(intent)
+        }
+
+        profileButton.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

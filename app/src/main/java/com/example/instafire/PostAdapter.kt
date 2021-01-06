@@ -14,15 +14,10 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.Glide.init
 import com.example.instafire.models.Post
-import kotlinx.android.synthetic.main.activity_recipe_page.view.*
-import kotlinx.android.synthetic.main.item_post.*
 import kotlinx.android.synthetic.main.item_post.view.*
 import java.math.BigInteger
 import java.security.MessageDigest
-import java.text.SimpleDateFormat
-import java.util.*
 
 private const val TAG = "PostAdapter"
 class PostAdapter(val context: Context, val posts: List<Post>) :
@@ -46,19 +41,15 @@ class PostAdapter(val context: Context, val posts: List<Post>) :
             val toRecipeBtn: Button = itemView.findViewById(R.id.goToRecipeButton)
             val username = post.user?.username as String
             itemView.tvUsername.text = post.user?.username
-            itemView.tvDishName.text = post.title
+            itemView.etDishName.text = post.title
             // gradle dependency updated
             Glide.with(context).load(post.imageUrl).into(itemView.ivRecipePicture)
             Glide.with(context).load(getProfileImageUrl(username)).into(itemView.ivUserProfile)
 
             // relative time: 1 hour ago
-            var formatter = SimpleDateFormat("MM/dd/yyyy")
-            var dateString = formatter.format(Date(post.creationTimeMs))
-            itemView.tvRelativeTime.text = dateString     // DateUtils.getRelativeTimeSpanString(post.creationTimeMs)
+            itemView.tvRelativeTime.text = DateUtils.getRelativeTimeSpanString(post.creationTimeMs)
 
-//            TODO: directs to create page not the recipe page
             itemView.goToRecipeButton.setOnClickListener {v: View ->
-                val position: Int = adapterPosition
                 Toast.makeText(itemView.context, "item clicked", Toast.LENGTH_SHORT).show()
                 val intent = Intent(itemView.context, RecipePage::class.java)
                 intent.putExtra("Dish Name", post.title)

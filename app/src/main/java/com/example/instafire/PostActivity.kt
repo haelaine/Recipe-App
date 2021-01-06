@@ -55,7 +55,6 @@ open class PostActivity : AppCompatActivity() {
         var postsReference = firestoreDb
                 .collection("posts")
                 .limit(20)
-                // TODO: order by creation time doesn't work, fireStore!
                 // .orderBy("creation_time", Query.Direction.DESCENDING)
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
@@ -93,6 +92,11 @@ open class PostActivity : AppCompatActivity() {
             Toast.makeText(this, "You are already on Post page!", Toast.LENGTH_SHORT).show()
         }
 
+        profileButton.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            intent.putExtra(EXTRA_USERNAME, signedInUser?.username)
+            startActivity(intent)
+        }
 
 
     }
@@ -102,12 +106,12 @@ open class PostActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menu_profile) {
-            val intent = Intent(this, ProfileActivity::class.java)
-            intent.putExtra(EXTRA_USERNAME, signedInUser?.username)
-            startActivity(intent)
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        if (item.itemId == R.id.menu_profile) {
+//            val intent = Intent(this, ProfileActivity::class.java)
+//            //intent.putExtra(EXTRA_USERNAME, signedInUser?.username)
+//            startActivity(intent)
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 }
