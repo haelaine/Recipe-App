@@ -14,6 +14,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_create.*
+import kotlinx.android.synthetic.main.activity_create.imageView
+import kotlinx.android.synthetic.main.activity_create.tvDescription
+import kotlinx.android.synthetic.main.activity_recipe_page.*
 
 private const val TAG = "CreateActivity"
 private const val PICK_PHOTO_CODE = 1234
@@ -63,7 +66,7 @@ class CreateActivity : AppCompatActivity() {
             return
         }
 
-        if (etDescription.text.isBlank()) {
+        if (tvDescription.text.isBlank()) {
             Toast.makeText(this, "Description cannot be empty", Toast.LENGTH_SHORT).show()
             return
         }
@@ -88,12 +91,20 @@ class CreateActivity : AppCompatActivity() {
                 }.continueWithTask { downloadUrlTask ->
                     // Create a post object with the image URL and add that to the posts collection
                     // TODO: update fake data
-                    val post = Post(
-                        "default title",
-                            etDescription.text.toString(),
-                            5,
-                        listOf("egg, milk"),
-                        60,
+
+                    var recipeSteps = etRecipe.text.toString();
+                    var stepsArray = recipeSteps.split(",");
+
+                    var ingredients = tvIngredients.text.toString();
+                    var ingredArray = ingredients.split(",");
+
+                    val post = Post(tvDishName.text.toString(),
+                            tvDescription.text.toString(),
+
+                            Integer.parseInt(etDifficulty.text.toString()),
+                        ingredArray,
+                        stepsArray,
+                            Integer.parseInt(etTime.text.toString()),
                             downloadUrlTask.result.toString(),
                             System.currentTimeMillis(),
                             signedInUser
@@ -105,13 +116,13 @@ class CreateActivity : AppCompatActivity() {
                         Log.e(TAG, "Exception during Firebase operations", postCreationTask.exception)
                         Toast.makeText(this, "Failed to save post", Toast.LENGTH_SHORT).show()
                     }
-                    etDescription.text.clear()
+                    tvDescription.text.clear()
                     imageView.setImageResource(0)
                     Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
-                    val postIntent = Intent(this, PostActivity::class.java)
-//                    postIntent.putExtra(EXTRA_USERNAME, signedInUser?.username)
-                    Log.i(TAG, "Creation success, go to post page")
-                    startActivity(postIntent)
+
+                    val profileIntent = Intent(this, ProfileActivity::class.java)
+                    //postIntent.putExtra(EXTRA_USERNAME, signedInUser?.username)
+                    startActivity(profileIntent)
                     finish()    // once created, remove create activity from back stack
                 }
 
