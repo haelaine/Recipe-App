@@ -1,11 +1,17 @@
 package com.example.instafire
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.instafire.models.Post
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_post.*
 import kotlinx.android.synthetic.main.activity_recipe_page.*
+import kotlinx.android.synthetic.main.activity_recipe_page.homeButton
+import kotlinx.android.synthetic.main.activity_recipe_page.profileButton
+import kotlinx.android.synthetic.main.activity_recipe_page.searchButton
 
 private const val TAG = "RecipePage"
 
@@ -51,6 +57,21 @@ class RecipePage : AppCompatActivity() {
             for (post in postList) {
                 Log.i(TAG, "Post ${post}")
             }
+        }
+
+        searchButton.setOnClickListener {
+            val intent = Intent(this, ExploreActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeButton.setOnClickListener {
+            val intent = Intent(this, PostActivity::class.java)
+            startActivity(intent)
+        }
+
+        profileButton.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
         }
     }
 }

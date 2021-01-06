@@ -52,12 +52,12 @@
         android:id="@+id/fabCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="72dp"
         android:backgroundTint="#595965"
         android:clickable="true"
         android:src="@android:drawable/ic_input_add"
-        android:tint="#FFFFFF"
+        app:backgroundTint="#595965"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

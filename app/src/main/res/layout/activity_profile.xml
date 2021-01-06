@@ -38,7 +38,7 @@
             android:textSize="30sp" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/profileSettingBtn"
             android:layout_width="73dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -47,35 +47,112 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView2"
+<!--    <ImageView-->
+<!--        android:id="@+id/profilePic"-->
+<!--        android:layout_width="85dp"-->
+<!--        android:layout_height="84dp"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="21dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/topToolbar"-->
+<!--        tools:srcCompat="@tools:sample/avatars" />-->
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profilePic"
         android:layout_width="85dp"
-        android:layout_height="84dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="81dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_height="85dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="21dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topToolbar"
+        tools:srcCompat="@tools:sample/avatars"
+        />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/profileUsername"
         android:layout_width="140dp"
         android:layout_height="34dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
         android:text="Username"
         android:textColor="#000000"
         android:textSize="24dp"
-        tools:layout_editor_absoluteX="111dp"
-        tools:layout_editor_absoluteY="85dp" />
+        app:layout_constraintStart_toEndOf="@+id/profilePic"
+        app:layout_constraintTop_toBottomOf="@+id/topToolbar" />
+
+    <TextView
+        android:id="@+id/profileBio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="14dp"
+        android:text="Personal Bio"
+        android:textColor="#404040"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/profilePic"
+        app:layout_constraintTop_toBottomOf="@+id/profileUsername" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="294dp"
+        android:id="@+id/followBtn"
+        android:layout_width="250dp"
         android:layout_height="46dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="40dp"
         android:backgroundTint="#666464"
         android:shadowColor="#000000"
         android:shadowDx="10"
         android:shadowDy="4"
         android:text="Follow"
         app:cornerRadius="20dp"
-        tools:layout_editor_absoluteX="104dp"
-        tools:layout_editor_absoluteY="119dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profilePic"
+        app:layout_constraintTop_toBottomOf="@+id/profileUsername" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPosts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topToolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="#73937E"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="544dp">
+
+        <ImageButton
+            android:id="@+id/homeButton"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:backgroundTint="#73937E"
+            app:srcCompat="@drawable/ic_baseline_home_24" />
+
+        <ImageButton
+            android:id="@+id/searchButton"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:backgroundTint="#73937E"
+            app:srcCompat="@drawable/ic_baseline_search_24" />
+
+        <ImageButton
+            android:id="@+id/profileButton"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:backgroundTint="#73937E"
+            app:srcCompat="@drawable/ic_baseline_person_40" />
+
+    </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

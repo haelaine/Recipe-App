@@ -1,5 +1,5 @@
 package com.example.instafire
-
+// TODO: consider inherit postActivity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +12,7 @@ import com.example.instafire.models.Post
 import com.example.instafire.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_explore.*
 
 private const val TAG = "ExploreActivity"
@@ -50,8 +51,7 @@ class ExploreActivity : AppCompatActivity() {
         var postsReference = firestoreDb
             .collection("posts")
             .limit(20)
-        // TODO: order by creation time doesn't work, fireStore!
-        // .orderBy("creation_time", Query.Direction.DESCENDING)
+                // .orderBy("creation_time", Query.Direction.DESCENDING)
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
         if(username != null) {
@@ -85,6 +85,12 @@ class ExploreActivity : AppCompatActivity() {
 
         homeButton.setOnClickListener {
             val intent = Intent(this, PostActivity::class.java)
+            startActivity(intent)
+        }
+
+        profileButton.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            intent.putExtra(EXTRA_USERNAME, signedInUser?.username)
             startActivity(intent)
         }
     }

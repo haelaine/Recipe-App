@@ -105,7 +105,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
-            android:id="@+id/homeButton"
+            android:id="@+id/homeButton_create"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -113,7 +113,7 @@
             app:srcCompat="@drawable/ic_baseline_home_24" />
 
         <ImageButton
-            android:id="@+id/searchButton"
+            android:id="@+id/searchButton_create"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
@@ -121,7 +121,7 @@
             app:srcCompat="@drawable/ic_baseline_search_24" />
 
         <ImageButton
-            android:id="@+id/profileButton"
+            android:id="@+id/profileButton_create"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"

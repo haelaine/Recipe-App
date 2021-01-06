@@ -31,7 +31,7 @@
             android:layout_height="70dp"
             android:clipToPadding="false">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ivUserProfile"
                 android:layout_width="40dp"
                 android:layout_height="40dp"

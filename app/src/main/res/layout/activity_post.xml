@@ -58,6 +58,7 @@
         android:backgroundTint="#595965"
         android:clickable="true"
         android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="#595965"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

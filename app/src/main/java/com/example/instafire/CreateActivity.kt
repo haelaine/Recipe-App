@@ -58,6 +58,21 @@ class CreateActivity : AppCompatActivity() {
         btnSubmit.setOnClickListener {
             handleSubmitButtonClick()
         }
+
+        searchButton_create.setOnClickListener {
+            val intent = Intent(this, ExploreActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeButton_create.setOnClickListener {
+            val intent = Intent(this, PostActivity::class.java)
+            startActivity(intent)
+        }
+
+        profileButton_create.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun handleSubmitButtonClick() {
@@ -102,8 +117,8 @@ class CreateActivity : AppCompatActivity() {
                             tvDescription.text.toString(),
 
                             Integer.parseInt(etDifficulty.text.toString()),
-                        ingredArray,
-                        stepsArray,
+                            ingredArray,
+                            stepsArray,
                             Integer.parseInt(etTime.text.toString()),
                             downloadUrlTask.result.toString(),
                             System.currentTimeMillis(),
