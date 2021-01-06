@@ -65,8 +65,20 @@ class PostAdapter(val context: Context, val posts: List<Post>) :
                 intent.putExtra("Description", post.description)
                 intent.putExtra("Difficulty", post.difficulty)
                 //intent.putExtra("Steps", post.steps)
-                //intent.putExtra("Ingredients", post.ingredients)
                 intent.putExtra("Minutes needed", post.minutes_needed)
+                intent.putExtra("imageUrl", post.imageUrl)
+                //val ingredientsList = intent.getStringArrayExtra(post.ingredients)
+
+                var numIngredients = 0 as Int
+
+                for (ingredient in post.ingredients) {
+                    intent.putExtra("ingredients" + numIngredients.toString(), ingredient)
+                    Log.i(TAG, "ingredients" + numIngredients.toString())
+                    Log.i(TAG, ingredient + numIngredients.toString())
+                    numIngredients++
+                }
+
+                intent.putExtra("Number of ingredients", numIngredients)
 
                 Log.i(TAG, post.description)
                 Log.i(TAG, "go to recipe button clicked")

@@ -106,7 +106,7 @@ class CreateActivity : AppCompatActivity() {
                         Toast.makeText(this, "Failed to save post", Toast.LENGTH_SHORT).show()
                     }
                     tvDescription.text.clear()
-                    imageView.setImageResource(0)
+                    recipeImage.setImageResource(0)
                     Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
                     val profileIntent = Intent(this, ProfileActivity::class.java)
                     profileIntent.putExtra(EXTRA_USERNAME, signedInUser?.username)
@@ -124,7 +124,7 @@ class CreateActivity : AppCompatActivity() {
             if (resultCode == Activity.RESULT_OK) {
                 photoUri = data?.data   // location of photo
                 Log.i(TAG, "photoUri $photoUri")
-                imageView.setImageURI(photoUri)     // imageView is layout id
+                recipeImage.setImageURI(photoUri)     // imageView is layout id
             }
 
             else {
