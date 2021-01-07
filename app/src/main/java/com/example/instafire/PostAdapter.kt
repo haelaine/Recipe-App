@@ -58,6 +58,8 @@ class PostAdapter(val context: Context, val posts: List<Post>) :
                 //intent.putExtra("Steps", post.steps)
                 intent.putExtra("Minutes needed", post.minutes_needed)
                 intent.putExtra("imageUrl", post.imageUrl)
+                intent.putExtra("Username", post.user?.username)
+                intent.putExtra("profileImageUrl", getProfileImageUrl(username))
                 //val ingredientsList = intent.getStringArrayExtra(post.ingredients)
 
                 var numIngredients = 0 as Int

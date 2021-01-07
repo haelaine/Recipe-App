@@ -31,6 +31,8 @@ class RecipePage : AppCompatActivity() {
         val minutesNeeded = recipeFields?.get("Minutes needed") as Int
         val imageUrl = recipeFields?.get("imageUrl") as String
         val numIngredients = recipeFields?.get("Number of ingredients") as Int
+        val profileImageUrl = recipeFields?.get("profileImageUrl") as String
+        val username = recipeFields?.get("Username") as String
 
         var counter = 0 as Int
         var listOfIngredients = "" as String
@@ -49,10 +51,12 @@ class RecipePage : AppCompatActivity() {
 
         tvDishName2.text = dishName
         tvDescription.text = description
-        tvDifficulty.text = difficulty.toString()
-        tvTime.text = minutesNeeded.toString()
-        Glide.with(this).load(imageUrl).into(imageView)
+        tvDifficulty_Post.text = "Difficulty: " + difficulty.toString()
+        tvTime.text = "Duration: " + minutesNeeded.toString()
+        Glide.with(this).load(imageUrl).into(recipeImage)
         tvIngredients.text = listOfIngredients
+        Glide.with(this).load(profileImageUrl).into(ivUserProfile2)
+        tvUsername2.text = username
         //tvSteps.text = steps
 
 

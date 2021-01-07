@@ -8,6 +8,10 @@
     android:orientation="vertical"
     tools:context=".CreateActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport = "true" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -69,15 +73,15 @@
                 android:hint="Enter Estimated Cooking Time (in minutes)" />
 
             <EditText
-                android:id="@+id/etRecipe"
+                android:id="@+id/etSteps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:hint="Enter Your Recipe " />
+                android:hint="Enter Your Recipe (press enter after each step) " />
 
             <EditText
-                android:id="@+id/etSteps"
+                android:id="@+id/etIngredients"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -96,12 +100,18 @@
 
         </LinearLayout>
 
+    </ScrollView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
         android:background="#73937E"
         android:clipToPadding="false"
+        android:gravity="bottom"
         android:orientation="horizontal"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="544dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
