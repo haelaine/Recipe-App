@@ -107,10 +107,10 @@ class CreateActivity : AppCompatActivity() {
                     // Create a post object with the image URL and add that to the posts collection
                     // TODO: update fake data
 
-                    var recipeSteps = etRecipe.text.toString();
+                    var recipeSteps = etSteps.text.toString();
                     var stepsArray = recipeSteps.split(",");
 
-                    var ingredients = tvIngredients.text.toString();
+                    var ingredients = etIngredients.text.toString();
                     var ingredArray = ingredients.split(",");
 
                     val post = Post(etDishName.text.toString(),
@@ -135,9 +135,9 @@ class CreateActivity : AppCompatActivity() {
                     imageView.setImageResource(0)
                     Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
 
-                    val profileIntent = Intent(this, ProfileActivity::class.java)
+                    val postIntent = Intent(this, PostActivity::class.java)
                     //postIntent.putExtra(EXTRA_USERNAME, signedInUser?.username)
-                    startActivity(profileIntent)
+                    startActivity(postIntent)
                     finish()    // once created, remove create activity from back stack
                 }
 
