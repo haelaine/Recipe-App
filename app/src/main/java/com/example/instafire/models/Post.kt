@@ -1,4 +1,4 @@
-package com.example.instafire.models
+        package com.example.instafire.models
 
 import com.google.firebase.firestore.PropertyName
 
