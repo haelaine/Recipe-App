@@ -86,12 +86,14 @@ class ExploreActivity : AppCompatActivity() {
         homeButton.setOnClickListener {
             val intent = Intent(this, PostActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         profileButton.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             intent.putExtra(EXTRA_USERNAME, signedInUser?.username)
             startActivity(intent)
+            finish()
         }
     }
 

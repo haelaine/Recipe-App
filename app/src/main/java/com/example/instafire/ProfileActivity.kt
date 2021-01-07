@@ -109,11 +109,13 @@ class ProfileActivity : AppCompatActivity() {
         searchButton.setOnClickListener {
             val intent = Intent(this, ExploreActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         homeButton.setOnClickListener {
             val intent = Intent(this, PostActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         profileButton.setOnClickListener {
