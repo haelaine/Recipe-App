@@ -68,6 +68,8 @@ class ProfileActivity : AppCompatActivity() {
                 .get()
                 .addOnSuccessListener {userSnapshot ->
                     signedInUser = userSnapshot.toObject(User::class.java)
+                    profileBio.text = signedInUser?.bio
+                    profileUsername.text = signedInUser?.username
                     Log.i(TAG, "signed in user: $signedInUser")
                 }
 
@@ -87,9 +89,6 @@ class ProfileActivity : AppCompatActivity() {
             // only display user's post on profile
             Glide.with(this).load(getProfileImageUrl(username)).into(profilePic)
         }
-        profileUsername.text = username
-        // TODO: get rid of hard coding
-        profileBio.text = "my bio"
 
 
         postsReference.addSnapshotListener { snapshot, exception ->
@@ -109,11 +108,13 @@ class ProfileActivity : AppCompatActivity() {
         searchButton.setOnClickListener {
             val intent = Intent(this, ExploreActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         homeButton.setOnClickListener {
             val intent = Intent(this, PostActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         profileButton.setOnClickListener {
@@ -123,6 +124,7 @@ class ProfileActivity : AppCompatActivity() {
         profileSettingBtn.setOnClickListener {
             val intent = Intent(this, ProfileSettingActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
