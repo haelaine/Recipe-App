@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instafire.models.Post
@@ -15,16 +16,20 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_post.*
 import kotlinx.android.synthetic.main.item_post.*
+import java.util.*
 
 private const val TAG = "PostActivity"
 const val EXTRA_USERNAME = "EXTRA_USERNAME"     // will be overwritten anyway
+const val EXTRA_SEARCH = "EXTRA_SEARCH"
 
 open class PostActivity : AppCompatActivity() {
 
     private var signedInUser: User? = null
     private lateinit var firestoreDb: FirebaseFirestore
     private lateinit var posts: MutableList<Post>
+//    private lateinit var searchResults: MutableList<Post>
     private lateinit var adapter: PostAdapter
+//    private lateinit var searchAdapter: PostAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +38,12 @@ open class PostActivity : AppCompatActivity() {
         //create layout file that represents one post - done
         //create data source - done
         posts = mutableListOf()     // empty mutable list
+//        searchResults = mutableListOf()
+
         //create the adapter
         adapter = PostAdapter(this, posts)
+//        searchAdapter = PostAdapter(this, searchResults)
+
         //bind adapter and layout manager to the RV
         rvPosts.adapter = adapter
         rvPosts.layoutManager = LinearLayoutManager(this)
@@ -52,20 +61,26 @@ open class PostActivity : AppCompatActivity() {
                     Log.i(TAG, "failure fetching signed in user", exception)
                 }
 
+        // TODO: consider limit to 20 posts
         var postsReference = firestoreDb
                 .collection("posts")
-                .limit(20)
-                // TODO: order by creation time doesn't work, fireStore!
+                as? Query
+//                .limit(20)
                 // .orderBy("creation_time", Query.Direction.DESCENDING)
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
         if(username != null) {
             supportActionBar?.title = username
-            postsReference = postsReference.whereEqualTo("user.username", username)
+            postsReference = postsReference?.whereEqualTo("user.username", username)
             // only display user's post on profile
         }
 
-        postsReference.addSnapshotListener { snapshot, exception ->
+        val searchInput = intent.getStringExtra(EXTRA_SEARCH)
+        if (searchInput != null) {
+            postsReference = postsReference?.whereEqualTo("title", searchInput)
+        }
+
+        postsReference?.addSnapshotListener { snapshot, exception ->
             if (exception != null || snapshot == null) {
                 Log.e(TAG, "Exception when querying posts", exception)
                 return@addSnapshotListener
@@ -87,27 +102,66 @@ open class PostActivity : AppCompatActivity() {
         searchButton.setOnClickListener {
             val intent = Intent(this, ExploreActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         homeButton.setOnClickListener {
             Toast.makeText(this, "You are already on Post page!", Toast.LENGTH_SHORT).show()
         }
 
-
-
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_posts, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menu_profile) {
+        profileButton.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             intent.putExtra(EXTRA_USERNAME, signedInUser?.username)
             startActivity(intent)
+            finish()
         }
-        return super.onOptionsItemSelected(item)
+
+        searchRecipeBtn.setOnClickListener {
+            val intent = Intent(this, PostActivity::class.java)
+            intent.putExtra(EXTRA_SEARCH, searchInputBox.text.toString())
+            startActivity(intent)
+            finish()
+        }
+
+        // TODO: consider using searchView?
+//        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                Log.i(TAG, "text submitted")
+//                searchBar.clearFocus()
+//                val searchText = query?.toLowerCase(Locale.getDefault())
+//                posts.forEach{
+//                    if(!it.title.toLowerCase(Locale.getDefault()).contains(searchText!!))
+//                        posts.remove(it)
+//                }
+//                adapter.notifyDataSetChanged()
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(query: String?): Boolean {
+//                Log.i(TAG, "text changed")
+////                val searchText = query?.toLowerCase(Locale.getDefault())
+////                posts.forEach{
+////                    if(!it.title.toLowerCase(Locale.getDefault()).contains(searchText!!))
+////                        posts.remove(it)
+////                }
+////                adapter.notifyDataSetChanged()
+//                return false
+//            }
+//        })
+
     }
+
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.menu_posts, menu)
+//        return super.onCreateOptionsMenu(menu)
+//    }
+
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        if (item.itemId == R.id.menu_profile) {
+//            val intent = Intent(this, ProfileActivity::class.java)
+//            //intent.putExtra(EXTRA_USERNAME, signedInUser?.username)
+//            startActivity(intent)
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 }

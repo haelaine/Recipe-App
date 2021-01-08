@@ -8,6 +8,10 @@
     android:orientation="vertical"
     tools:context=".CreateActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport = "true" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,7 +26,7 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="159dp"
+                android:layout_height="259dp"
                 android:scaleType="centerCrop"
                 tools:srcCompat="@tools:sample/avatars" />
 
@@ -35,13 +39,31 @@
                 android:text="Choose Image"
                 android:textColor="#000000" />
 
+            <TextView
+                android:id="@+id/dishNameDir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Enter the dish name: "
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
             <EditText
                 android:id="@+id/etDishName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:hint="Enter Dish Name " />
+                android:hint="Dish Name" />
+
+            <TextView
+                android:id="@+id/dishDescriptionDir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Describe your dish: "
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/etDescription"
@@ -49,7 +71,34 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:hint="Enter Your Description " />
+                android:hint="Description" />
+
+            <TextView
+                android:id="@+id/difficultyLevelDir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Enter the difficulty level of the dish (from 1 to 10): "
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/etDifficulty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Difficulty Level"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/timeDir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Enter estimated cooking time (in minutes): "
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/etTime"
@@ -57,15 +106,33 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:hint="Enter Estimated Cooking Time" />
+                android:hint="Estimated Cooking Time" />
+
+            <TextView
+                android:id="@+id/stepsDir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Enter the recipe steps: "
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/etRecipe"
+                android:id="@+id/etSteps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:hint="Enter Your Recipe " />
+                android:hint="Recipe Steps" />
+
+            <TextView
+                android:id="@+id/ingredientsDir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Enter the ingredients needed (separate each ingredient with a comma): "
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/etIngredients"
@@ -73,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:hint="Enter Your Ingredients (Comma Separated) " />
+                android:hint="Ingredients" />
 
             <Button
                 android:id="@+id/btnSubmit"
@@ -87,16 +154,22 @@
 
         </LinearLayout>
 
+    </ScrollView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
         android:background="#73937E"
         android:clipToPadding="false"
+        android:gravity="bottom"
         android:orientation="horizontal"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="544dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
-            android:id="@+id/homeButton"
+            android:id="@+id/homeButton_create"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -104,7 +177,7 @@
             app:srcCompat="@drawable/ic_baseline_home_24" />
 
         <ImageButton
-            android:id="@+id/searchButton"
+            android:id="@+id/searchButton_create"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
@@ -112,7 +185,7 @@
             app:srcCompat="@drawable/ic_baseline_search_24" />
 
         <ImageButton
-            android:id="@+id/profileButton"
+            android:id="@+id/profileButton_create"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"

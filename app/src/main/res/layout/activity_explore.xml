@@ -31,6 +31,7 @@
             android:id="@+id/exploreText"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
             android:text="Explore"
@@ -52,12 +53,12 @@
         android:id="@+id/fabCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="72dp"
         android:backgroundTint="#595965"
         android:clickable="true"
         android:src="@android:drawable/ic_input_add"
-        android:tint="#FFFFFF"
+        app:backgroundTint="#595965"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -81,17 +82,17 @@
 
         <ImageButton
             android:id="@+id/searchButton"
-            android:layout_width="60dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
-            android:backgroundTint="#73937E"
+            android:layout_marginLeft="40dp"
+            android:backgroundTint="#9CBDA8"
             app:srcCompat="@drawable/ic_baseline_search_24" />
 
         <ImageButton
             android:id="@+id/profileButton"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="40dp"
             android:backgroundTint="#73937E"
             app:srcCompat="@drawable/ic_baseline_person_40" />
 

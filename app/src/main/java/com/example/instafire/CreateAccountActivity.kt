@@ -80,8 +80,9 @@ class CreateAccountActivity : AppCompatActivity() {
 
                     val user = User(
                         username,
-                        18,
-                            email
+                            email,
+                            "",
+                            ""
                     )
 
                     var usersReference = firestoreDb.collection("users")

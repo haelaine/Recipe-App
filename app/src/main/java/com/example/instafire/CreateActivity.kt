@@ -14,6 +14,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_create.*
+import kotlinx.android.synthetic.main.activity_create.imageView
+import kotlinx.android.synthetic.main.activity_create.etDescription
+import kotlinx.android.synthetic.main.activity_recipe_page.*
 
 private const val TAG = "CreateActivity"
 private const val PICK_PHOTO_CODE = 1234
@@ -55,6 +58,21 @@ class CreateActivity : AppCompatActivity() {
         btnSubmit.setOnClickListener {
             handleSubmitButtonClick()
         }
+
+        searchButton_create.setOnClickListener {
+            val intent = Intent(this, ExploreActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeButton_create.setOnClickListener {
+            val intent = Intent(this, PostActivity::class.java)
+            startActivity(intent)
+        }
+
+        profileButton_create.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun handleSubmitButtonClick() {
@@ -88,12 +106,20 @@ class CreateActivity : AppCompatActivity() {
                 }.continueWithTask { downloadUrlTask ->
                     // Create a post object with the image URL and add that to the posts collection
                     // TODO: update fake data
-                    val post = Post(
-                        "default title",
+
+                    var recipeSteps = etSteps.text.toString();
+                    var stepsArray = recipeSteps.split(",");
+
+                    var ingredients = etIngredients.text.toString();
+                    var ingredArray = ingredients.split(",");
+
+                    val post = Post(etDishName.text.toString(),
                             etDescription.text.toString(),
-                            5,
-                        listOf("egg, milk"),
-                        60,
+
+                            Integer.parseInt(etDifficulty.text.toString()),
+                            ingredArray,
+                            stepsArray,
+                            Integer.parseInt(etTime.text.toString()),
                             downloadUrlTask.result.toString(),
                             System.currentTimeMillis(),
                             signedInUser
@@ -108,9 +134,10 @@ class CreateActivity : AppCompatActivity() {
                     etDescription.text.clear()
                     imageView.setImageResource(0)
                     Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
-                    val profileIntent = Intent(this, ProfileActivity::class.java)
-                    profileIntent.putExtra(EXTRA_USERNAME, signedInUser?.username)
-                    startActivity(profileIntent)
+
+                    val postIntent = Intent(this, PostActivity::class.java)
+                    //postIntent.putExtra(EXTRA_USERNAME, signedInUser?.username)
+                    startActivity(postIntent)
                     finish()    // once created, remove create activity from back stack
                 }
 

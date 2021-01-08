@@ -30,9 +30,14 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.InstaFire">
+        <activity android:name=".ChangePasswordActivity" />
+        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".EditProfile" />
+        <activity android:name=".ProfileSettingActivity" />
+        <activity android:name=".RecipePage" />
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
         <activity android:name=".ExploreActivity" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".CreateActivity" />

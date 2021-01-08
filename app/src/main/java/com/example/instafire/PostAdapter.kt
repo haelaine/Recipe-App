@@ -14,14 +14,10 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.Glide.init
 import com.example.instafire.models.Post
-import kotlinx.android.synthetic.main.item_post.*
 import kotlinx.android.synthetic.main.item_post.view.*
 import java.math.BigInteger
 import java.security.MessageDigest
-import java.text.SimpleDateFormat
-import java.util.*
 
 private const val TAG = "PostAdapter"
 class PostAdapter(val context: Context, val posts: List<Post>) :
@@ -45,23 +41,47 @@ class PostAdapter(val context: Context, val posts: List<Post>) :
             val toRecipeBtn: Button = itemView.findViewById(R.id.goToRecipeButton)
             val username = post.user?.username as String
             itemView.tvUsername.text = post.user?.username
-            itemView.tvDishName.text = post.description
+            itemView.etDishName.text = post.title
             // gradle dependency updated
             Glide.with(context).load(post.imageUrl).into(itemView.ivRecipePicture)
             Glide.with(context).load(getProfileImageUrl(username)).into(itemView.ivUserProfile)
 
             // relative time: 1 hour ago
-            var formatter = SimpleDateFormat("MM/dd/yyyy")
-            var dateString = formatter.format(Date(post.creationTimeMs))
-            itemView.tvRelativeTime.text = dateString     // DateUtils.getRelativeTimeSpanString(post.creationTimeMs)
+            itemView.tvRelativeTime.text = DateUtils.getRelativeTimeSpanString(post.creationTimeMs)
 
-//            TODO: directs to create page not the recipe page
             itemView.goToRecipeButton.setOnClickListener {v: View ->
-                val position: Int = adapterPosition
                 Toast.makeText(itemView.context, "item clicked", Toast.LENGTH_SHORT).show()
-                val intent = Intent(itemView.context, CreateActivity::class.java)
+                val intent = Intent(itemView.context, RecipePage::class.java)
+                intent.putExtra("Dish Name", post.title)
+                intent.putExtra("Description", post.description)
+                intent.putExtra("Difficulty", post.difficulty)
+                //intent.putExtra("Steps", post.steps)
+                intent.putExtra("Minutes needed", post.minutes_needed)
+                intent.putExtra("imageUrl", post.imageUrl)
+                intent.putExtra("Username", post.user?.username)
+                intent.putExtra("profileImageUrl", getProfileImageUrl(username))
+                //val ingredientsList = intent.getStringArrayExtra(post.ingredients)
+
+                var numIngredients = 0 as Int
+
+                for (ingredient in post.ingredients) {
+                    intent.putExtra("ingredients" + numIngredients.toString(), ingredient)
+                    Log.i(TAG, "ingredients" + numIngredients.toString())
+                    Log.i(TAG, ingredient + numIngredients.toString())
+                    numIngredients++
+                }
+
+                intent.putExtra("Number of ingredients", numIngredients)
+
+                Log.i(TAG, post.description)
                 Log.i(TAG, "go to recipe button clicked")
                 startActivity(itemView.context, intent, null)
+                /*val recipePage = LayoutInflater.from(context).inflate(R.layout.activity_recipe_page, null)
+                recipePage.etDishName.text = post.title
+                recipePage.etDescription.text = post.description
+                Log.i(TAG, post.title)
+                Log.i(TAG, post.description)*/
+
             }
 
         }
