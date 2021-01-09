@@ -33,6 +33,7 @@ class RecipePage : AppCompatActivity() {
         val numIngredients = recipeFields?.get("Number of ingredients") as Int
         val profileImageUrl = recipeFields?.get("profileImageUrl") as String
         val username = recipeFields?.get("Username") as String
+        val steps = recipeFields?.get("Steps") as String
 
         var counter = 0 as Int
         var listOfIngredients = "" as String
@@ -57,7 +58,7 @@ class RecipePage : AppCompatActivity() {
         tvIngredients.text = listOfIngredients
         Glide.with(this).load(profileImageUrl).into(ivUserProfile2)
         tvUsername2.text = username
-        //tvSteps.text = steps
+        tvSteps.text = steps
 
 
         /*postsReference.addSnapshotListener{ snapshot, exception->

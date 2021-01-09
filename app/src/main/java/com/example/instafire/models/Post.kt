@@ -17,7 +17,7 @@ data class Post(
         var description: String = "",
         var difficulty: Int = 0,
         var ingredients: List<String> = emptyList(),
-        var steps: List<String> = emptyList(),
+        var steps: String = "",
         var minutes_needed: Int = 0,           // var time_needed: String = "",
         @get:PropertyName("image_url") @set:PropertyName("image_url") var imageUrl: String = "",
         @get:PropertyName("creation_time_ms") @set:PropertyName("creation_time_ms") var creationTimeMs: Long = 0,

@@ -178,7 +178,6 @@
         android:background="#73937E"
         android:clipToPadding="false"
         android:orientation="horizontal"
-
         >
 
         <ImageButton
