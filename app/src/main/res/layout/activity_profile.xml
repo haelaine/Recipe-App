@@ -80,8 +80,9 @@
         android:text="Username"
         android:textColor="#000000"
         android:textSize="24dp"
-        app:layout_constraintStart_toEndOf="@+id/profilePic"
-        app:layout_constraintTop_toBottomOf="@+id/topToolbar" />
+        tools:layout_editor_absoluteX="111dp"
+        tools:layout_editor_absoluteY="81dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/profileBio"
@@ -95,6 +96,13 @@
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/profilePic"
         app:layout_constraintTop_toBottomOf="@+id/profileUsername" />
+
+<!--    <Button-->
+<!--        android:id="@+id/followingButton"-->
+<!--        android:layout_width="294dp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/profilePic"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/profileBio"-->
+<!--        android:layout_height="45dp" />-->
 
     <Button
         android:id="@+id/followBtn"
@@ -159,5 +167,29 @@
     </LinearLayout>
 
 
+
+    <EditText
+        android:id="@+id/followersNumber"
+        android:layout_width="30dp"
+        android:layout_height="37dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="12dp"
+        tools:layout_editor_absoluteX="286dp"
+        tools:layout_editor_absoluteY="81dp"
+        tools:text="10"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/followingNumber"
+        android:layout_width="28dp"
+        android:layout_height="34dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="12dp"
+        tools:layout_editor_absoluteX="342dp"
+        tools:layout_editor_absoluteY="85dp"
+        tools:text="10"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
