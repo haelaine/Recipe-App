@@ -12,7 +12,6 @@ import com.example.instafire.models.Post
 import com.example.instafire.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_explore.*
 
 private const val TAG = "ExploreActivity"
@@ -79,7 +78,7 @@ class ExploreActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        searchButton.setOnClickListener {
+        fabCreate.setOnClickListener {
             Toast.makeText(this, "You are already on Explore page!", Toast.LENGTH_SHORT).show()
         }
 

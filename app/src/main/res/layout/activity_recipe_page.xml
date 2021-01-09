@@ -190,7 +190,7 @@
             app:srcCompat="@drawable/ic_baseline_home_24" />
 
         <ImageButton
-            android:id="@+id/searchButton"
+            android:id="@+id/fabCreate"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"

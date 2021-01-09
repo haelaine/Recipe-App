@@ -4,9 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instafire.models.Post
@@ -15,8 +12,6 @@ import com.example.instafire.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_post.*
-import kotlinx.android.synthetic.main.item_post.*
-import java.util.*
 
 private const val TAG = "PostActivity"
 const val EXTRA_USERNAME = "EXTRA_USERNAME"     // will be overwritten anyway
@@ -99,11 +94,11 @@ open class PostActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        searchButton.setOnClickListener {
-            val intent = Intent(this, ExploreActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        fabCreate.setOnClickListener {
+//            val intent = Intent(this, ExploreActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
         homeButton.setOnClickListener {
             Toast.makeText(this, "You are already on Post page!", Toast.LENGTH_SHORT).show()
