@@ -107,8 +107,8 @@ class CreateActivity : AppCompatActivity() {
                     // Create a post object with the image URL and add that to the posts collection
                     // TODO: update fake data
 
-                    var recipeSteps = etSteps.text.toString();
-                    var stepsArray = recipeSteps.split(",");
+                  //  var recipeSteps = etSteps.text.toString();
+                   // var stepsArray = recipeSteps.split(",");
 
                     var ingredients = etIngredients.text.toString();
                     var ingredArray = ingredients.split(",");
@@ -118,7 +118,8 @@ class CreateActivity : AppCompatActivity() {
 
                             Integer.parseInt(etDifficulty.text.toString()),
                             ingredArray,
-                            stepsArray,
+                            //stepsArray,
+                            etSteps.text.toString(),
                             Integer.parseInt(etTime.text.toString()),
                             downloadUrlTask.result.toString(),
                             System.currentTimeMillis(),
