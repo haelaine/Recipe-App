@@ -44,6 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Enter the dish name: "
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -61,6 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Describe your dish: "
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -78,6 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Enter the difficulty level of the dish (from 1 to 10): "
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -96,6 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Enter estimated cooking time (in minutes): "
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -113,6 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Enter the recipe steps: "
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -130,6 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Enter the ingredients needed (separate each ingredient with a comma): "
                 android:textColor="@color/black"
                 android:textSize="20sp" />

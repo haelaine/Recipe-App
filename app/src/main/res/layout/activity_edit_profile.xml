@@ -31,6 +31,7 @@
             android:layout_width="151dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat"
             android:gravity="center_horizontal"
             android:text="Settings"
             android:textAllCaps="false"
@@ -49,35 +50,49 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <EditText
-        android:id="@+id/editUsername"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="45dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Enter new username"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="225dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Enter new email:"
+        android:textColor="#000000"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editProfilePicture" />
+        app:layout_constraintTop_toBottomOf="@+id/topToolbar" />
 
     <EditText
         android:id="@+id/editEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="190dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Enter new email"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/editProfilePicture" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Enter new bio:"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/editBio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="190dp"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -94,4 +109,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editBio" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

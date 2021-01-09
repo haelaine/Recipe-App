@@ -9,7 +9,10 @@ import com.bumptech.glide.Glide
 import com.example.instafire.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_profile_setting.*
+import java.math.BigInteger
+import java.security.MessageDigest
 
 private val TAG = "ProfileSettingActivity"
 
@@ -33,7 +36,7 @@ class ProfileSettingActivity : AppCompatActivity() {
                 .get()
                 .addOnSuccessListener {userSnapshot ->
                     signedInUser = userSnapshot?.toObject(User::class.java)
-                    Glide.with(this).load(signedInUser?.imageUrl).into(ivProfilePic)
+                    Glide.with(this).load(getProfileImageUrl(signedInUser!!.username)).into(editProfilePicture)
                     tvName.text = signedInUser?.username
                     tvDisplayBio.text = signedInUser?.bio
                     Log.i(TAG, "signed in user: $signedInUser")
@@ -48,24 +51,22 @@ class ProfileSettingActivity : AppCompatActivity() {
         btnUpdateProfile.setOnClickListener{
             val intent = Intent(this, EditProfileActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         btnLogout.setOnClickListener{
             FirebaseAuth.getInstance().signOut()
             startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
 
         btnGoBack.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         btnResetPassword.setOnClickListener {
             val intent = Intent(this, ChangePasswordActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         btnDeleteAccount.setOnClickListener {
@@ -78,6 +79,14 @@ class ProfileSettingActivity : AppCompatActivity() {
                         finish()
                     }
         }
+    }
+
+    private fun getProfileImageUrl(username: String): String {
+        val digest = MessageDigest.getInstance("MD5");
+        val hash = digest.digest(username.toByteArray());
+        val bigInt = BigInteger(hash);
+        val hex = bigInt.abs().toString(16);
+        return "https://www.gravatar.com/avatar/$hex?d=identicon";
     }
 
 

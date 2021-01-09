@@ -91,7 +91,7 @@
             android:id="@+id/fabCreate"
             android:layout_width="74dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="35dp"
             android:backgroundTint="#73937E"
             app:srcCompat="@drawable/ic_baseline_add_24" />
 
@@ -99,7 +99,7 @@
             android:id="@+id/profileButton"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="75dp"
+            android:layout_marginLeft="70dp"
             android:backgroundTint="#73937E"
             app:srcCompat="@drawable/ic_baseline_person_40" />
 
