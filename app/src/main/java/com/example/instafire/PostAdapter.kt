@@ -49,6 +49,13 @@ class PostAdapter(val context: Context, val posts: List<Post>) :
             // relative time: 1 hour ago
             itemView.tvRelativeTime.text = DateUtils.getRelativeTimeSpanString(post.creationTimeMs)
 
+            itemView.tvUsername.setOnClickListener {
+//                Toast.makeText(itemView.context, "user clicked", Toast.LENGTH_SHORT).show()
+                val intent = Intent(itemView.context, ProfileActivity::class.java)
+                intent.putExtra("EXTRA_USERNAME", itemView.tvUsername.text.toString())
+                startActivity(itemView.context, intent, null)
+            }
+
             itemView.goToRecipeButton.setOnClickListener {v: View ->
 //                Toast.makeText(itemView.context, "item clicked", Toast.LENGTH_SHORT).show()
                 val intent = Intent(itemView.context, RecipePage::class.java)

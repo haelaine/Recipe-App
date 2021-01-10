@@ -11,6 +11,7 @@ import com.example.instafire.models.Post
 import com.example.instafire.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_explore.homeButton
 import kotlinx.android.synthetic.main.activity_explore.profileButton
 import kotlinx.android.synthetic.main.activity_explore.rvPosts
@@ -48,6 +49,10 @@ class ProfileActivity : AppCompatActivity() {
                     signedInUser = userSnapshot.toObject(User::class.java)
                     profileBio.text = signedInUser?.bio
                     profileUsername.text = signedInUser?.username
+                    val signedInUsername = signedInUser?.username
+                    Log.i(TAG, "signedInUsername: $signedInUsername")
+                    if (signedInUsername != null)
+                        Glide.with(this).load(getProfileImageUrl(signedInUsername)).into(profilePic)
                     Log.i(TAG, "signed in user: $signedInUser")
                 }
 
@@ -56,16 +61,25 @@ class ProfileActivity : AppCompatActivity() {
                 }
 
         var postsReference = firestoreDb
-                .collection("posts")
-                .limit(20)
+                .collection("posts") as Query
+//                .limit(20)
         // .orderBy("creation_time", Query.Direction.DESCENDING)
 
-        val username = intent.getStringExtra(EXTRA_USERNAME)
-        if(username != null) {
-            supportActionBar?.title = username
-            postsReference = postsReference.whereEqualTo("user.username", username)
+        var usersReference = firestoreDb.
+                collection("users") as Query
+
+        val extraUsername = intent.getStringExtra(EXTRA_USERNAME)
+        homeText.text = "Profile"
+        if(extraUsername != null) {
+            supportActionBar?.title = extraUsername
+            postsReference = postsReference.whereEqualTo("user.username", extraUsername)
+//            usersReference = usersReference.whereEqualTo("username", extraUsername)
+//            profileUsername.text = usersReference.get("username")
             // only display user's post on profile
-            Glide.with(this).load(getProfileImageUrl(username)).into(profilePic)
+
+//            if (signedInUsername != extraUsername)
+//                homeText.text = "$extraUsername's Profile"
+
         }
 
 
