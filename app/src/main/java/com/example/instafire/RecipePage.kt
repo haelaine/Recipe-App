@@ -53,12 +53,12 @@ class RecipePage : AppCompatActivity() {
         tvDishName2.text = dishName
         tvDescription.text = description
         tvDifficulty_Post.text = "Difficulty: " + difficulty.toString()
-        tvTime.text = "Duration: " + minutesNeeded.toString()
+        tvTime.text = "Duration: " + minutesNeeded.toString() + " min"
         Glide.with(this).load(imageUrl).into(recipeImage)
         tvIngredients.text = listOfIngredients
         Glide.with(this).load(profileImageUrl).into(ivUserProfile2)
         tvUsername2.text = username
-        tvSteps.text = steps
+        tvSteps.text = steps + "\n" + "\n"
 
 
         /*postsReference.addSnapshotListener{ snapshot, exception->

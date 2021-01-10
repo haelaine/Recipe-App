@@ -130,7 +130,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Enter the ingredients needed (separate each ingredient with a comma): "
+                android:text="Enter what you need to make the dish such as ingredients and/or tools (separate each item with a comma):"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 

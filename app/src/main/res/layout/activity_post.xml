@@ -84,14 +84,14 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#73937E"
         android:clipToPadding="false"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="#73937E"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="544dp">
+        tools:layout_editor_absoluteX="53dp">
 
         <ImageButton
             android:id="@+id/homeButton"
@@ -119,3 +119,4 @@
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
