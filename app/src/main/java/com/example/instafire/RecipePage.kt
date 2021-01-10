@@ -52,8 +52,10 @@ class RecipePage : AppCompatActivity() {
 
         tvDishName2.text = dishName
         tvDescription.text = description
-        tvDifficulty_Post.text = "Difficulty: " + difficulty.toString()
-        tvTime.text = "Duration: " + minutesNeeded.toString() + " min"
+        val diffStr = difficulty.toString()
+        tvDifficulty_Post.text = "Difficulty: $diffStr / 10"
+        val durationStr = minutesNeeded.toString()
+        tvTime.text = "Duration: $durationStr min"
         Glide.with(this).load(imageUrl).into(recipeImage)
         tvIngredients.text = listOfIngredients
         Glide.with(this).load(profileImageUrl).into(ivUserProfile2)

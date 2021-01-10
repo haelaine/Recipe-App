@@ -1,13 +1,20 @@
 package com.example.instafire
+
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.instafire.models.User
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.main.activity_create_account.*
+import kotlin.properties.Delegates
+
+
+// TODO: do not allow duplicated username, it's still buggy
 
 private const val TAG = "CreateAccountActivity"
 class CreateAccountActivity : AppCompatActivity() {
@@ -33,10 +40,31 @@ class CreateAccountActivity : AppCompatActivity() {
 
     private fun performRegister() {
         //val is a constant
-        val username = username_edittext_register.text.toString()
+        var username = username_edittext_register.text.toString()
         val email = email_edittext_register.text.toString()
         val password = password_edittext_register.text.toString()
         val rePassword = re_password_edittext_register.text.toString()
+
+        var duplicateUsername = false
+        firestoreDb.collection("users")
+                .get()
+                .addOnCompleteListener(OnCompleteListener<QuerySnapshot> { task ->
+                    if (task.isSuccessful) {
+                        for (document in task.result!!) {
+                            if (document.get("username") == username) {
+                                username_edittext_register.error = "Username is taken, please use another one."
+                                duplicateUsername = true
+                            }
+                        }
+                    } else {
+                        Log.w(TAG, "Error getting documents.", task.exception)
+                    }
+                })
+
+        Log.i(TAG, "dup: $duplicateUsername")
+        if (duplicateUsername) {
+            return
+        }
 
         if (username.isEmpty()) {
             username_edittext_register.error = "Please enter username."
@@ -79,7 +107,7 @@ class CreateAccountActivity : AppCompatActivity() {
                     Log.d(TAG, "Successfully created user with uid: ${it.result?.user?.uid}")
 
                     val user = User(
-                        username,
+                            username,
                             email,
                             "",
                             ""
