@@ -9,7 +9,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_recipe_page.*
 import kotlinx.android.synthetic.main.activity_recipe_page.homeButton
 import kotlinx.android.synthetic.main.activity_recipe_page.profileButton
-import kotlinx.android.synthetic.main.activity_recipe_page.searchButton
+import kotlinx.android.synthetic.main.activity_recipe_page.fabCreate
 
 private const val TAG = "RecipePage"
 
@@ -74,7 +74,7 @@ class RecipePage : AppCompatActivity() {
             }
         }*/
 
-        searchButton.setOnClickListener {
+        fabCreate.setOnClickListener {
             val intent = Intent(this, ExploreActivity::class.java)
             startActivity(intent)
         }

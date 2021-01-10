@@ -24,6 +24,7 @@
     </queries>
 
     <application
+        android:windowSoftInputMode="adjustPan"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="Easy Bites"

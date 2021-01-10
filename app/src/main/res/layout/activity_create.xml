@@ -22,7 +22,6 @@
             android:clipToPadding="false"
             android:orientation="vertical">
 
-
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
@@ -44,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Enter the dish name: "
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -61,6 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Describe your dish: "
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -78,6 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Enter the difficulty level of the dish (from 1 to 10): "
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -96,6 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Enter estimated cooking time (in minutes): "
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -113,6 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Enter the recipe steps: "
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -131,6 +135,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Enter what you need to make the dish such as ingredients and/or tools (separate each item with a comma):"
+                android:fontFamily="@font/montserrat"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 

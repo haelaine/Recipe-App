@@ -4,8 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -13,35 +11,16 @@ import com.example.instafire.models.Post
 import com.example.instafire.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_explore.*
+import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_explore.homeButton
 import kotlinx.android.synthetic.main.activity_explore.profileButton
 import kotlinx.android.synthetic.main.activity_explore.rvPosts
-import kotlinx.android.synthetic.main.activity_explore.searchButton
-import kotlinx.android.synthetic.main.activity_post.*
+import kotlinx.android.synthetic.main.activity_explore.fabCreate
 import kotlinx.android.synthetic.main.activity_profile.*
-import kotlinx.android.synthetic.main.item_post.view.*
 import java.math.BigInteger
 import java.security.MessageDigest
 
 private const val TAG = "ProfileActivity"
-
-//class ProfileActivity : PostActivity() {
-//
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.menu_profile, menu)
-//        return true
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        if(item.itemId == R.id.menu_logout) {
-//            Log.i(TAG, "User wants to logout")
-//            FirebaseAuth.getInstance().signOut();
-//            startActivity(Intent(this, LoginActivity::class.java))
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
-//}
 
 class ProfileActivity : AppCompatActivity() {
     private var signedInUser: User? = null
@@ -70,6 +49,10 @@ class ProfileActivity : AppCompatActivity() {
                     signedInUser = userSnapshot.toObject(User::class.java)
                     profileBio.text = signedInUser?.bio
                     profileUsername.text = signedInUser?.username
+                    val signedInUsername = signedInUser?.username
+                    Log.i(TAG, "signedInUsername: $signedInUsername")
+                    if (signedInUsername != null)
+                        Glide.with(this).load(getProfileImageUrl(signedInUsername)).into(profilePic)
                     Log.i(TAG, "signed in user: $signedInUser")
                 }
 
@@ -78,16 +61,25 @@ class ProfileActivity : AppCompatActivity() {
                 }
 
         var postsReference = firestoreDb
-                .collection("posts")
-                .limit(20)
+                .collection("posts") as Query
+//                .limit(20)
         // .orderBy("creation_time", Query.Direction.DESCENDING)
 
-        val username = intent.getStringExtra(EXTRA_USERNAME)
-        if(username != null) {
-            supportActionBar?.title = username
-            postsReference = postsReference.whereEqualTo("user.username", username)
+        var usersReference = firestoreDb.
+                collection("users") as Query
+
+        val extraUsername = intent.getStringExtra(EXTRA_USERNAME)
+        homeText.text = "Profile"
+        if(extraUsername != null) {
+            supportActionBar?.title = extraUsername
+            postsReference = postsReference.whereEqualTo("user.username", extraUsername)
+//            usersReference = usersReference.whereEqualTo("username", extraUsername)
+//            profileUsername.text = usersReference.get("username")
             // only display user's post on profile
-            Glide.with(this).load(getProfileImageUrl(username)).into(profilePic)
+
+//            if (signedInUsername != extraUsername)
+//                homeText.text = "$extraUsername's Profile"
+
         }
 
 
@@ -105,8 +97,8 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
-        searchButton.setOnClickListener {
-            val intent = Intent(this, ExploreActivity::class.java)
+        fabCreate.setOnClickListener {
+            val intent = Intent(this, CreateActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -124,7 +116,6 @@ class ProfileActivity : AppCompatActivity() {
         profileSettingBtn.setOnClickListener {
             val intent = Intent(this, ProfileSettingActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
 
