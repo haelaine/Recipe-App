@@ -68,12 +68,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="190dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="215dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Enter new email"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editProfilePicture" />
+        app:layout_constraintTop_toBottomOf="@id/topToolbar" />
 
     <TextView
         android:id="@+id/textView2"

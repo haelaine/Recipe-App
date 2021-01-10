@@ -50,7 +50,7 @@ class PostAdapter(val context: Context, val posts: List<Post>) :
             itemView.tvRelativeTime.text = DateUtils.getRelativeTimeSpanString(post.creationTimeMs)
 
             itemView.goToRecipeButton.setOnClickListener {v: View ->
-                Toast.makeText(itemView.context, "item clicked", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(itemView.context, "item clicked", Toast.LENGTH_SHORT).show()
                 val intent = Intent(itemView.context, RecipePage::class.java)
                 intent.putExtra("Dish Name", post.title)
                 intent.putExtra("Description", post.description)

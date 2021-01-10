@@ -40,7 +40,7 @@ class EditProfileActivity : AppCompatActivity() {
                 signedInUser = userSnapshot?.toObject(User::class.java)
 //                editUsername.setText(signedInUser?.username)
                 editBio.setText(signedInUser?.bio)
-                Glide.with(this).load(getProfileImageUrl(signedInUser!!.username)).into(editProfilePicture)
+//                Glide.with(this).load(getProfileImageUrl(signedInUser!!.username)).into(editProfilePicture)
                 Log.i(TAG, "signed in user: $signedInUser")
             }
 

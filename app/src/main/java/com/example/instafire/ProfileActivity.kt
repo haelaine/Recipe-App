@@ -102,7 +102,6 @@ class ProfileActivity : AppCompatActivity() {
         profileSettingBtn.setOnClickListener {
             val intent = Intent(this, ProfileSettingActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
 

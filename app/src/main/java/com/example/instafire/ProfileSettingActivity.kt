@@ -32,11 +32,14 @@ class ProfileSettingActivity : AppCompatActivity() {
         val user = fireauthDb.currentUser
 
         firestoreDb.collection("users")
-                .document(user?.uid as String)
+                .document(FirebaseAuth.getInstance().currentUser?.uid as String)
                 .get()
                 .addOnSuccessListener {userSnapshot ->
                     signedInUser = userSnapshot?.toObject(User::class.java)
-                    Glide.with(this).load(getProfileImageUrl(signedInUser!!.username)).into(editProfilePicture)
+//                    Log.i(TAG,"signed in user: $signedInUser")
+//                    val username = signedInUser?.username
+//                    if (username != null)
+//                        Glide.with(this).load(getProfileImageUrl(username)).into(editProfilePicture)
                     tvName.text = signedInUser?.username
                     tvDisplayBio.text = signedInUser?.bio
                     Log.i(TAG, "signed in user: $signedInUser")
@@ -46,7 +49,7 @@ class ProfileSettingActivity : AppCompatActivity() {
                     Log.i(TAG, "failure fetching signed in user", exception)
                 }
 
-        tvDisplayEmail.text = user.email
+        tvDisplayEmail.text = user?.email
 
         btnUpdateProfile.setOnClickListener{
             val intent = Intent(this, EditProfileActivity::class.java)
@@ -61,6 +64,7 @@ class ProfileSettingActivity : AppCompatActivity() {
 
         btnGoBack.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
+            intent.putExtra(EXTRA_USERNAME, signedInUser?.username)
             startActivity(intent)
         }
 
